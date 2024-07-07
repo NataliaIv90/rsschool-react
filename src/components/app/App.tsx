@@ -1,13 +1,14 @@
 import { Component } from 'react';
 import './App.css';
 import ErrorBoundary from '../errorBoundary/ErrorBoundary';
+import SearchPage from '../searchPage/SearchPage';
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="App">
         <ErrorBoundary>
-          <div>App</div>
+          <SearchPage />
         </ErrorBoundary>
       </div>
     );
