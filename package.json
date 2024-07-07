@@ -12,7 +12,7 @@
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "format:fix": "prettier --write './**/*.{js,jsx,ts,tsx,css,scss,md,json}' --config ./.prettierrc",
-    "pre-commit": "npm run format && npm run lint"
+    "precommit": "npm run format && npm run lint"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -36,5 +36,10 @@
     "prettier": "^3.3.2",
     "typescript": "^5.2.2",
     "vite": "^5.3.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
   }
 }
