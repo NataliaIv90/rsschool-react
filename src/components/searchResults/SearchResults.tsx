@@ -8,7 +8,7 @@ interface SearchResultsProps {
 
 const SearchResults: React.FC<SearchResultsProps> = ({ results }) => {
   return (
-    <div>
+    <div className="cards">
       {results.length ? (
         results.map((result, index) => (
           <CharacterCard key={index} character={result} />

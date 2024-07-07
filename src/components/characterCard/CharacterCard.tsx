@@ -1,4 +1,4 @@
-import React from 'react'; // Assuming you have defined the interface in a separate file
+import React from 'react';
 import { IStarWarsCharacter } from '../searchPage/SearchPage';
 
 interface CharacterCardProps {
@@ -11,14 +11,38 @@ class CharacterCard extends React.Component<CharacterCardProps> {
 
     return (
       <div className="character-card">
-        <h2>{character.name}</h2>
-        <p>Height: {character.height} cm</p>
-        <p>Mass: {character.mass} kg</p>
-        <p>Hair Color: {character.hair_color}</p>
-        <p>Skin Color: {character.skin_color}</p>
-        <p>Eye Color: {character.eye_color}</p>
-        <p>Birth Year: {character.birth_year}</p>
-        <p>Gender: {character.gender}</p>
+        <div className="card-image"></div>
+        <div className="card-content">
+          <h2 className="card-title">{character.name}</h2>
+          <p>
+            <span>Height:</span>
+            <span> {character.height} cm</span>
+          </p>
+          <p>
+            <span>Mass:</span>
+            <span> {character.mass} kg</span>
+          </p>
+          <p>
+            <span>Hair Color:</span>
+            <span> {character.hair_color}</span>
+          </p>
+          <p>
+            <span>Skin Color:</span>
+            <span> {character.skin_color}</span>
+          </p>
+          <p>
+            <span>Eye Color:</span>
+            <span> {character.eye_color}</span>
+          </p>
+          <p>
+            <span>Birth Year:</span>
+            <span> {character.birth_year}</span>
+          </p>
+          <p>
+            <span>Gender:</span>
+            <span> {character.gender}</span>
+          </p>
+        </div>
       </div>
     );
   }

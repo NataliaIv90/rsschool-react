@@ -20,17 +20,19 @@ class SearchInput extends Component<SearchInputProps> {
     const { searchTerm, isLoading } = this.props;
 
     return (
-      <form>
+      <form className="search-form">
         <input
           type="text"
           value={searchTerm}
           onChange={this.handleInputChange}
-          placeholder="Search..."
+          placeholder="Enter the query..."
+          className="form-input"
         />
         <button
           type="submit"
           onClick={this.handleSearchClick}
           disabled={isLoading}
+          className="btn"
         >
           Search
         </button>

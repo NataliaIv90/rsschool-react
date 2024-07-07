@@ -76,7 +76,7 @@ class SearchPage extends Component<unknown, SearchPageState> {
     const { searchTerm, results, isLoading } = this.state;
 
     return (
-      <div>
+      <div className="search-page">
         <SearchInput
           searchTerm={searchTerm}
           onSearchTermChange={this.handleSearchTermChange}

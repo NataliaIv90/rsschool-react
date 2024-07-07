@@ -46,8 +46,10 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     }
 
     return (
-      <div>
-        <button onClick={this.handleThrowError}>Check Error Boundary</button>
+      <div className="error-boundary">
+        <button className="btn" onClick={this.handleThrowError}>
+          Check Error Boundary
+        </button>
         {this.props.children}
       </div>
     );
