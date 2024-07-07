@@ -1,0 +1,149 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --basic-grey: #3a3838;
+  --basic-white: #e6e6e6;
+  --basic-yellow: #f8dc49;
+  --basic-blue: #13139c;
+  --bkg-color: #cdcccc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--basic-grey);
+  background-color: var(--bkg-color);
+}
+
+.btn {
+  background-color: var(--basic-yellow);
+  color: #4b4b4b;
+  padding: 7px 12px;
+  box-shadow: 3px 3px var(--basic-blue);
+  border-radius: 5px;
+  border: none;
+}
+
+.search-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--basic-grey);
+  width: 100%;
+  padding: 1rem;
+}
+
+.form-input {
+  background-color: var(--basic-grey);
+  padding: 7px 12px;
+  width: 280px;
+  color: var(--bkg-color);
+  border: none;
+  box-shadow: 3px 3px #000;
+  border-radius: 5px;
+}
+
+.form-input:active,
+.form-input:hover,
+.form-input:focus {
+  border: none;
+}
+
+.form-input::placeholder {
+  color: var(--bkg-color);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 280px 280px 280px;
+  gap: 2rem;
+  padding: 30px;
+}
+
+.character-card {
+  border: 1px solid var(--basic-blue);
+  box-shadow: 8px 8px #645fe1;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s;
+  background-color: var(--basic-grey);
+  color: var(--bkg-color);
+}
+
+.character-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+
+.card-image {
+  background-color: var(--basic-yellow);
+  height: 50px;
+  transition: all 0.3s;
+}
+
+.card-title {
+  color: var(--basic-yellow);
+  text-shadow: 3px 3px var(--basic-blue);
+  text-align: center;
+}
+
+.card-content {
+  padding: 1rem 2rem;
+}
+
+.card-content p {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 980px) {
+  .cards {
+    grid-template-columns: 280px 280px;
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  body {
+    font-size: 14px;
+  }
+
+  .cards {
+    display: block;
+    margin: auto;
+  }
+
+  .character-card {
+    width: 280px;
+    margin-bottom: 2rem;
+  }
+
+  .search-form {
+    flex-direction: column;
+    justify-content: stretch;
+  }
+
+  .form-input {
+    width: auto;
+  }
+}
