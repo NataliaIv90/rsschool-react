@@ -23,7 +23,13 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       error: error,
       errorInfo: errorInfo,
     });
+    // Log error to console
+    console.error('Error caught in ErrorBoundary:', error, errorInfo);
   }
+
+  handleThrowError = () => {
+    throw new Error('This is a test error thrown from ErrorBoundary.');
+  };
 
   render() {
     if (this.state.hasError) {
@@ -38,7 +44,13 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
         </div>
       );
     }
-    return this.props.children;
+
+    return (
+      <div>
+        <button onClick={this.handleThrowError}>Check Error Boundary</button>
+        {this.props.children}
+      </div>
+    );
   }
 }
 

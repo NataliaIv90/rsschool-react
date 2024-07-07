@@ -2,6 +2,12 @@ import { Component } from 'react';
 import SearchInput from '../searchInput/SearchInput';
 import SearchResults from '../searchResults/SearchResults';
 
+interface SearchPageState {
+  searchTerm: string;
+  results: IStarWarsCharacter[];
+  isLoading: boolean;
+}
+
 export interface IStarWarsCharacter {
   name: string;
   height: string;
@@ -21,19 +27,13 @@ export interface IStarWarsCharacter {
   url: string;
 }
 
-interface SearchPageState {
-  searchTerm: string;
-  results: IStarWarsCharacter[];
-  isLoading: boolean;
-}
-
 class SearchPage extends Component<unknown, SearchPageState> {
   constructor(props: unknown) {
     super(props);
     this.state = {
       searchTerm: '',
       results: [],
-      isLoading: false,
+      isLoading: true,
     };
   }
 
@@ -41,6 +41,8 @@ class SearchPage extends Component<unknown, SearchPageState> {
     const storedSearchTerm = localStorage.getItem('searchTerm');
     if (storedSearchTerm) {
       this.setState({ searchTerm: storedSearchTerm }, this.fetchResults);
+    } else {
+      this.fetchResults();
     }
   }
 
