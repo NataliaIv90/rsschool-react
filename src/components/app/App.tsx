@@ -1,9 +1,9 @@
-import { Outlet } from 'react-router-dom';
+import { SearchPage } from '../searchPage/SearchPage';
 
 const App = (): JSX.Element => {
   return (
     <div className="App">
-      <Outlet />
+      <SearchPage />
     </div>
   );
 };

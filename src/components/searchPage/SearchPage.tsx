@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import SearchInput from '../searchInput/SearchInput';
 import SearchResults from '../searchResults/SearchResults';
 import { Pagination } from '../pagination/Pagination';
@@ -13,7 +14,8 @@ export const SearchPage: React.FC = (): JSX.Element => {
   const [isLoading, setLoading] = useState(false);
   const [count, setCount] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [isNeedToFetch, setNeedToFetch] = useState<boolean>(true);
+  const navigate = useNavigate();
+  const [isNeedToFetchData, setNeedToFetchData] = useState<boolean>(true);
 
   const handleSearchTermChange = async (searchTerm: string): Promise<void> => {
     await setSearchTerm(searchTerm);
@@ -28,6 +30,10 @@ export const SearchPage: React.FC = (): JSX.Element => {
     scrollToTop();
     setCurrentPage(page);
     fetchResults(page, searchTerm);
+  };
+
+  const handleCharacterSelect = (id: string) => {
+    navigate(`/details/${id}`);
   };
 
   const fetchResults = useCallback(
@@ -54,9 +60,9 @@ export const SearchPage: React.FC = (): JSX.Element => {
     [setLoading]
   );
 
-  if (isNeedToFetch) {
-    setNeedToFetch(false);
-    fetchResults(currentPage, searchTerm);
+  if (isNeedToFetchData) {
+    setNeedToFetchData(false);
+    fetchResults(1, searchTerm);
   }
 
   return (
@@ -68,7 +74,13 @@ export const SearchPage: React.FC = (): JSX.Element => {
         onSearch={handleSearch}
         isLoading={isLoading}
       />
-      <SearchResults results={results} />
+      <div className="search-main-section">
+        <SearchResults
+          results={results}
+          onCharacterSelect={handleCharacterSelect}
+        />
+        <Outlet />
+      </div>
       <Pagination
         count={count}
         currentPage={currentPage}

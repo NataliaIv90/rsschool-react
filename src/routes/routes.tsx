@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from '../components/app/App';
-import { SearchPage } from '../components/searchPage/SearchPage';
+import { DetailedView } from '../components/detailedSection/DetailedSection';
 import { RouteError } from '../components/routeError/RouteError';
 
 export const router = createBrowserRouter([
@@ -10,8 +10,8 @@ export const router = createBrowserRouter([
     errorElement: <RouteError />,
     children: [
       {
-        element: <SearchPage />,
-        path: '/',
+        element: <DetailedView />,
+        path: '/details/:name',
       },
     ],
   },

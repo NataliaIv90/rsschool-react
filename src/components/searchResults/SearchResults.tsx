@@ -1,19 +1,23 @@
 import React from 'react';
 import { SearchResultsProps } from '../../types/types';
-import CharacterCard from '../characterCard/CharacterCard';
 
 const SearchResults: React.FC<SearchResultsProps> = ({
   results,
-}): JSX.Element => {
+  onCharacterSelect,
+}) => {
   return (
-    <div className="cards">
-      {results.length ? (
-        results.map((result, index) => (
-          <CharacterCard key={index} character={result} />
-        ))
-      ) : (
-        <p>No results to display</p>
-      )}
+    <div className="search-results">
+      {results.map((character) => (
+        <button
+          key={character.name}
+          className="btn"
+          onClick={() =>
+            onCharacterSelect(character.url.split('/people/')[1].split('/')[0])
+          }
+        >
+          {character.name}
+        </button>
+      ))}
     </div>
   );
 };

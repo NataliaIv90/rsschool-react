@@ -50,3 +50,13 @@ export interface ErrorBoundaryState {
   error: Error | null;
   errorInfo: React.ErrorInfo | null;
 }
+
+export interface DetailedSectionProps {
+  character: IStarWarsCharacter;
+  onClose: () => void;
+}
+
+export interface SearchResultsProps {
+  results: IStarWarsCharacter[];
+  onCharacterSelect: (id: string) => void;
+}
