@@ -141,10 +141,22 @@ body {
 }
 
 .pagination-wrapper {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin: 30px 0 50px;
+  margin: 30px auto 50px;
+}
+
+.pagination-select {
+  background-color: var(--basic-yellow);
+  color: var(--basic-grey-light);
+  padding: 7px 12px;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.2s;
+  box-shadow: 3px 3px #645fe1;
+}
+
+.pagination-select:focus-visible {
+  outline: -webkit-focus-ring-color none;
+  outline-offset: none;
 }
 
 @media screen and (max-width: 980px) {

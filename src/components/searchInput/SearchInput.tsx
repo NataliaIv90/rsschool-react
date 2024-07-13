@@ -1,4 +1,4 @@
-import { Component, ChangeEvent } from 'react';
+import React, { ChangeEvent } from 'react';
 
 interface SearchInputProps {
   searchTerm: string;
@@ -7,38 +7,40 @@ interface SearchInputProps {
   isLoading: boolean;
 }
 
-class SearchInput extends Component<SearchInputProps> {
-  handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    this.props.onSearchTermChange(event.target.value);
+const SearchInput: React.FC<SearchInputProps> = ({
+  searchTerm,
+  onSearchTermChange,
+  onSearch,
+  isLoading,
+}): JSX.Element => {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    onSearchTermChange(event.target.value);
   };
 
-  handleSearchClick = () => {
-    this.props.onSearch();
+  const handleSearchClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    onSearch();
   };
 
-  render() {
-    const { searchTerm, isLoading } = this.props;
-
-    return (
-      <form className="search-form">
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={this.handleInputChange}
-          placeholder="Enter the query..."
-          className="form-input"
-        />
-        <button
-          type="submit"
-          onClick={this.handleSearchClick}
-          disabled={isLoading}
-          className="btn"
-        >
-          Search
-        </button>
-      </form>
-    );
-  }
-}
+  return (
+    <form className="search-form">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={handleInputChange}
+        placeholder="Enter the query..."
+        className="form-input"
+      />
+      <button
+        type="submit"
+        onClick={handleSearchClick}
+        disabled={isLoading}
+        className="btn"
+      >
+        Search
+      </button>
+    </form>
+  );
+};
 
 export default SearchInput;

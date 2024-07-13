@@ -6,7 +6,9 @@ interface SearchResultsProps {
   results: IStarWarsCharacter[];
 }
 
-const SearchResults: React.FC<SearchResultsProps> = ({ results }) => {
+const SearchResults: React.FC<SearchResultsProps> = ({
+  results,
+}): JSX.Element => {
   return (
     <div className="cards">
       {results.length ? (
