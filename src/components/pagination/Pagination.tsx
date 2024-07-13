@@ -1,11 +1,5 @@
 import { FC } from 'react';
-
-interface IPagination {
-  currentPage: number;
-  count: number;
-  itemsPerPage?: number;
-  onPageChange: (page: number) => void;
-}
+import { IPagination } from '../../types/types';
 
 export const Pagination: FC<IPagination> = ({
   currentPage,

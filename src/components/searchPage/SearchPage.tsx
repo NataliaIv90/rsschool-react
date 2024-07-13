@@ -5,25 +5,7 @@ import { Pagination } from '../pagination/Pagination';
 import { useSaveSearchQuery } from '../../shared/hooks/useSaveSearchQuery';
 import { Loader } from '../../shared/components/loader/Loader';
 import { scrollToTop } from '../../shared/utils/scrollToTop';
-
-export interface IStarWarsCharacter {
-  name: string;
-  height: string;
-  mass: string;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
-  birth_year: string;
-  gender: string;
-  homeworld: string;
-  films: string[];
-  species: string[];
-  vehicles: string[];
-  starships: string[];
-  created: string;
-  edited: string;
-  url: string;
-}
+import { IStarWarsCharacter } from '../../types/types';
 
 export const SearchPage: React.FC = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = useSaveSearchQuery();

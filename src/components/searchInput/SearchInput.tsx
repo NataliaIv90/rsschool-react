@@ -1,11 +1,5 @@
 import React, { ChangeEvent } from 'react';
-
-interface SearchInputProps {
-  searchTerm: string;
-  onSearchTermChange: (searchTerm: string) => void;
-  onSearch: () => void;
-  isLoading: boolean;
-}
+import { SearchInputProps } from '../../types/types';
 
 const SearchInput: React.FC<SearchInputProps> = ({
   searchTerm,

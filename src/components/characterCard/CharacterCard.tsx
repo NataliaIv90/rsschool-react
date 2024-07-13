@@ -1,11 +1,7 @@
 import React from 'react';
-import { IStarWarsCharacter } from '../searchPage/SearchPage';
+import { ICharacterCardProps } from '../../types/types';
 
-interface CharacterCardProps {
-  character: IStarWarsCharacter;
-}
-
-const CharacterCard: React.FC<CharacterCardProps> = ({
+const CharacterCard: React.FC<ICharacterCardProps> = ({
   character,
 }): JSX.Element => (
   <div className="character-card">
