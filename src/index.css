@@ -159,6 +159,26 @@ body {
   outline-offset: none;
 }
 
+.route-error {
+  width: 100vw;
+  height: 80vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.route-error__content {
+  padding: 50px;
+  border: 3px solid var(--basic-blue);
+  background-color: var(--basic-yellow-light);
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 8px 8px var(--basic-blue);
+  min-width: 300px;
+}
+
 @media screen and (max-width: 980px) {
   .cards {
     grid-template-columns: 280px 280px;

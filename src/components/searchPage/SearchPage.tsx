@@ -15,8 +15,8 @@ export const SearchPage: React.FC = (): JSX.Element => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isNeedToFetch, setNeedToFetch] = useState<boolean>(true);
 
-  const handleSearchTermChange = (searchTerm: string): void => {
-    setSearchTerm(searchTerm);
+  const handleSearchTermChange = async (searchTerm: string): Promise<void> => {
+    await setSearchTerm(searchTerm);
   };
 
   const handleSearch = (): void => {
