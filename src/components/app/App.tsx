@@ -1,11 +1,11 @@
+import { Outlet } from 'react-router-dom';
 import ErrorBoundary from '../errorBoundary/ErrorBoundary';
-import { SearchPage } from '../searchPage/SearchPage';
 
 const App = (): JSX.Element => {
   return (
     <div className="App">
       <ErrorBoundary>
-        <SearchPage />
+        <Outlet />
       </ErrorBoundary>
     </div>
   );
