@@ -1,11 +1,15 @@
 import { Component } from 'react';
 import SearchInput from '../searchInput/SearchInput';
 import SearchResults from '../searchResults/SearchResults';
+import { Pagination } from '../pagination/Pagination';
+import { Loader } from '../../shared/loader/Loader';
 
 interface SearchPageState {
   searchTerm: string;
   results: IStarWarsCharacter[];
   isLoading: boolean;
+  count: number;
+  currentPage: number;
 }
 
 export interface IStarWarsCharacter {
@@ -34,6 +38,8 @@ class SearchPage extends Component<unknown, SearchPageState> {
       searchTerm: '',
       results: [],
       isLoading: true,
+      count: 1,
+      currentPage: 1,
     };
   }
 
@@ -51,20 +57,33 @@ class SearchPage extends Component<unknown, SearchPageState> {
   };
 
   handleSearch = () => {
+    this.handlePageChange(1);
     this.fetchResults();
     localStorage.setItem('searchTerm', this.state.searchTerm.trim());
   };
 
-  fetchResults = () => {
-    const { searchTerm } = this.state;
-    const apiUrl = `https://swapi.dev/api/people/?search=${searchTerm}`;
+  handlePageChange = async (currentPage: number) => {
+    await this.setState({ currentPage });
+    await this.fetchResults();
+  };
 
+  fetchResults = () => {
+    const { searchTerm, currentPage } = this.state;
+    let apiUrl = `https://swapi.dev/api/people/?page=${currentPage}`;
+    if (searchTerm) {
+      apiUrl += `&search=${searchTerm}`;
+    }
     this.setState({ isLoading: true });
 
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ results: data.results, isLoading: false });
+        console.log(data);
+        this.setState({
+          results: data.results,
+          isLoading: false,
+          count: data.count,
+        });
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -73,7 +92,7 @@ class SearchPage extends Component<unknown, SearchPageState> {
   };
 
   render() {
-    const { searchTerm, results, isLoading } = this.state;
+    const { searchTerm, results, isLoading, count, currentPage } = this.state;
 
     return (
       <div className="search-page">
@@ -83,7 +102,18 @@ class SearchPage extends Component<unknown, SearchPageState> {
           onSearch={this.handleSearch}
           isLoading={isLoading}
         />
-        {isLoading ? <p>Loading...</p> : <SearchResults results={results} />}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <SearchResults results={results} />
+            <Pagination
+              count={count}
+              currentPage={currentPage}
+              onPageChange={this.handlePageChange}
+            />
+          </>
+        )}
       </div>
     );
   }
