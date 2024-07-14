@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import React, { useState, useCallback, useEffect } from 'react';
+import { Outlet, useNavigate, useSearchParams } from 'react-router-dom';
 import SearchInput from '../searchInput/SearchInput';
 import SearchResults from '../searchResults/SearchResults';
 import { Pagination } from '../pagination/Pagination';
@@ -13,57 +13,58 @@ export const SearchPage: React.FC = (): JSX.Element => {
   const [results, setResults] = useState<IStarWarsCharacter[]>([]);
   const [isLoading, setLoading] = useState(false);
   const [count, setCount] = useState<number>(0);
-  const [currentPage, setCurrentPage] = useState<number>(1);
   const navigate = useNavigate();
-  const [isNeedToFetchData, setNeedToFetchData] = useState<boolean>(true);
+  const [isInitialLoad, setInitialLoad] = useState(true);
+  const [searchParams] = useSearchParams();
+
+  const params = {
+    page: searchParams.get('page') || '1',
+  };
 
   const handleSearchTermChange = async (searchTerm: string): Promise<void> => {
     await setSearchTerm(searchTerm);
   };
 
   const handleSearch = (): void => {
-    setCurrentPage(1);
     fetchResults(1, searchTerm);
-  };
-
-  const handlePageChange = (page: number): void => {
-    scrollToTop();
-    setCurrentPage(page);
-    fetchResults(page, searchTerm);
   };
 
   const handleCharacterSelect = (id: string) => {
-    navigate(`/details/${id}`);
+    navigate(`/details/?page=${params.page}&id=${id}`);
   };
 
-  const fetchResults = useCallback(
-    (page: number, searchTerm?: string) => {
-      let apiUrl = `https://swapi.dev/api/people/?page=${page}`;
-      if (searchTerm) {
-        apiUrl += `&search=${searchTerm}`;
-      }
-      setLoading(true);
+  const fetchResults = useCallback((page: number, searchTerm?: string) => {
+    let apiUrl = `https://swapi.dev/api/people/?page=${page}`;
+    if (searchTerm) {
+      apiUrl += `&search=${searchTerm}`;
+    }
+    setLoading(true);
 
-      fetch(apiUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          setResults(data.results);
-          setLoading(false);
-          setCount(data.count);
-        })
-        .catch((error) => {
-          console.error('Error fetching data:', error);
-          setLoading(false);
-        });
-    },
-    [setLoading]
-  );
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        setResults(data.results);
+        setCount(data.count);
+        setLoading(false);
+        setInitialLoad(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+        setLoading(false);
+      });
+  }, []);
 
-  if (isNeedToFetchData) {
-    setNeedToFetchData(false);
-    fetchResults(1, searchTerm);
-  }
+  const handlePageChange = (page: number): void => {
+    scrollToTop();
+    navigate(`/?page=${page}`);
+    fetchResults(page, searchTerm);
+  };
+
+  useEffect(() => {
+    if (isInitialLoad) {
+      fetchResults(parseInt(params.page, 10), searchTerm);
+    }
+  }, [isInitialLoad, fetchResults, params.page, searchTerm]);
 
   return (
     <div className="search-page">
@@ -75,15 +76,21 @@ export const SearchPage: React.FC = (): JSX.Element => {
         isLoading={isLoading}
       />
       <div className="search-main-section">
-        <SearchResults
-          results={results}
-          onCharacterSelect={handleCharacterSelect}
-        />
-        <Outlet />
+        {results.length ? (
+          <>
+            <SearchResults
+              results={results}
+              onCharacterSelect={handleCharacterSelect}
+            />
+            <Outlet />
+          </>
+        ) : (
+          <p>No data found</p>
+        )}
       </div>
       <Pagination
         count={count}
-        currentPage={currentPage}
+        currentPage={parseInt(params.page, 10)}
         onPageChange={handlePageChange}
       />
     </div>

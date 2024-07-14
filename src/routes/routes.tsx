@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
     children: [
       {
         element: <DetailedView />,
-        path: '/details/:name',
+        path: '/details/',
       },
     ],
   },
