@@ -1,5 +1,6 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useCallback } from 'react';
 import { SearchInputProps } from '../../types/types';
+import { Button } from '../../shared/components/button/Button';
 
 const SearchInput: React.FC<SearchInputProps> = ({
   searchTerm,
@@ -7,14 +8,20 @@ const SearchInput: React.FC<SearchInputProps> = ({
   onSearch,
   isLoading,
 }): JSX.Element => {
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onSearchTermChange(event.target.value);
-  };
+  const handleInputChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      onSearchTermChange(event.target.value);
+    },
+    [onSearchTermChange]
+  );
 
-  const handleSearchClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    onSearch();
-  };
+  const handleSearchClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      onSearch();
+    },
+    [onSearch]
+  );
 
   return (
     <form className="search-form">
@@ -25,14 +32,12 @@ const SearchInput: React.FC<SearchInputProps> = ({
         placeholder="Enter the query..."
         className="form-input"
       />
-      <button
+      <Button
+        text="Search"
+        onEventClick={handleSearchClick}
         type="submit"
-        onClick={handleSearchClick}
         disabled={isLoading}
-        className="btn"
-      >
-        Search
-      </button>
+      />
     </form>
   );
 };

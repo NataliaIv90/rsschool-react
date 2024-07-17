@@ -23,10 +23,14 @@ export interface IStarWarsCharacter {
   url: string;
 }
 
+export type TVoidFunction = () => void;
+
+export type TOnSearchTermChange = (searchTerm: string) => void;
+
 export interface SearchInputProps {
   searchTerm: string;
-  onSearchTermChange: (searchTerm: string) => void;
-  onSearch: () => void;
+  onSearchTermChange: TOnSearchTermChange;
+  onSearch: TVoidFunction;
   isLoading: boolean;
 }
 

@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { IStarWarsCharacter } from '../../types/types';
 import CharacterCard from '../characterCard/CharacterCard';
 import { Loader } from '../../shared/components/loader/Loader';
+import { Button } from '../../shared/components/button/Button';
 
 export const DetailedView: React.FC = () => {
   const navigate = useNavigate();
@@ -49,9 +50,7 @@ export const DetailedView: React.FC = () => {
     return (
       <div>
         <p>No character found.</p>
-        <button className="btn" onClick={handleClose}>
-          Close
-        </button>
+        <Button text="Close" onClick={handleClose} />
       </div>
     );
   }
@@ -59,9 +58,7 @@ export const DetailedView: React.FC = () => {
   return (
     <div className="detailed-section">
       <CharacterCard character={character} />
-      <button className="btn" onClick={handleClose}>
-        Close this card
-      </button>
+      <Button text="Close card" onClick={handleClose} />
     </div>
   );
 };

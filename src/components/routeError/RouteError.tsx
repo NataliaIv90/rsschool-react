@@ -1,24 +1,22 @@
 import { isRouteErrorResponse, Link, useRouteError } from 'react-router-dom';
+import { Button } from '../../shared/components/button/Button';
 
 export const RouteError = () => {
   const error = useRouteError();
-  let message = 'An unknown error occurred';
-
-  if (error instanceof Error) {
-    message = error.message;
-  } else if (isRouteErrorResponse(error)) {
-    message = error.statusText || JSON.stringify(error.data);
-  }
-
   console.error(error);
 
   return (
     <div className="route-error">
       <div className="route-error__content">
         <h1>Oops!</h1>
-        <p>{message}</p>
+        <p>An unexpected error occurred.</p>
+        <p>
+          {isRouteErrorResponse(error)
+            ? error.statusText
+            : JSON.stringify(error)}
+        </p>
         <Link to="/">
-          <button className="btn">Back to home</button>
+          <Button text="Back to home" />
         </Link>
       </div>
     </div>
