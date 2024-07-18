@@ -1,10 +1,9 @@
 import React from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Loader } from '../../shared/components/loader/Loader';
-import { Button } from '../../shared/components/button/Button';
 import { useGetCharacterDataQuery } from '../../redux/slices/starWarsApiSlice';
 import { RouteError } from '../routeError/RouteError';
 import { CardWrapper } from './CardWrapper';
+import { useLoading } from '../../shared/hooks/useLoading';
 
 export const DetailedView: React.FC = () => {
   const navigate = useNavigate();
@@ -28,18 +27,7 @@ export const DetailedView: React.FC = () => {
     navigate(`/?page=${params.page}`);
   };
 
-  if (isLoading || isFetching) {
-    return <Loader />;
-  }
-
-  if (!character || !params.id) {
-    return (
-      <div>
-        <p>No character found.</p>
-        <Button text="Close" onClick={handleClose} />
-      </div>
-    );
-  }
+  useLoading(isLoading, isFetching);
 
   if (isError) {
     return <RouteError currentError={error} />;

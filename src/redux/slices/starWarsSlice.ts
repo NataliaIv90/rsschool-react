@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICharacterCardData } from '@/assets/data/dataArrays';
 
-export type TInitialState = {
+export type TStartWarsSliceState = {
   data: ICharacterCardData[] | [];
   isLoading: boolean;
   error: null | string;
@@ -9,7 +9,7 @@ export type TInitialState = {
   count: number;
 };
 
-const initialState: TInitialState = {
+const initialState: TStartWarsSliceState = {
   data: [],
   isLoading: false,
   error: null,

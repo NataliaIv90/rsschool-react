@@ -79,7 +79,6 @@ export type TSearchForm = {
   handleFormSubmit: TOnSubmitFunction;
   searchTerm: string;
   handleInputChange: TOnChangeFunction;
-  isLoading: boolean;
 };
 
 export type TResponseData = {

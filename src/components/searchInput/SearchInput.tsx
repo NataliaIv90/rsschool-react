@@ -6,7 +6,6 @@ const SearchInput: React.FC<SearchInputProps> = ({
   searchTerm: externalSearchTerm,
   onSearchTermChange,
   onSearch,
-  isLoading,
 }): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState(externalSearchTerm);
 
@@ -33,7 +32,6 @@ const SearchInput: React.FC<SearchInputProps> = ({
   return (
     <SearchForm
       handleFormSubmit={handleFormSubmit}
-      isLoading={isLoading}
       handleInputChange={handleInputChange}
       searchTerm={searchTerm}
     />
