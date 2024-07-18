@@ -64,3 +64,33 @@ export interface SearchResultsProps {
   results: IStarWarsCharacter[];
   onCharacterSelect: (id: string) => void;
 }
+
+export type TOnSubmitFunction = (
+  event:
+    | React.FormEvent<HTMLFormElement>
+    | React.MouseEvent<HTMLButtonElement, MouseEvent>
+) => void;
+
+export type TOnChangeFunction = (
+  event: React.ChangeEvent<HTMLInputElement>
+) => void;
+
+export type TSearchForm = {
+  handleFormSubmit: TOnSubmitFunction;
+  searchTerm: string;
+  handleInputChange: TOnChangeFunction;
+  isLoading: boolean;
+};
+
+export type TResponseData = {
+  count?: number;
+  next?: string;
+  previous?: string;
+  results?: IStarWarsCharacter[] | IStarWarsCharacter;
+  detail?: string;
+};
+
+export type TApiQueryProps = {
+  page: string;
+  searchTerm: string;
+};

@@ -1,6 +1,7 @@
+import React from 'react';
 import { SearchPage } from '../searchPage/SearchPage';
 
-const App = (): JSX.Element => {
+const App: React.FC = (): JSX.Element => {
   return (
     <div className="App">
       <SearchPage />

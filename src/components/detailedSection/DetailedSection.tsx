@@ -1,48 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { IStarWarsCharacter } from '../../types/types';
-import CharacterCard from '../characterCard/CharacterCard';
 import { Loader } from '../../shared/components/loader/Loader';
 import { Button } from '../../shared/components/button/Button';
+import { useGetCharacterDataQuery } from '../../redux/slices/starWarsApiSlice';
+import { RouteError } from '../routeError/RouteError';
+import { CardWrapper } from './CardWrapper';
 
 export const DetailedView: React.FC = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const [character, setCharacter] = useState<IStarWarsCharacter | null>(null);
-  const [isLoading, setLoading] = useState(true);
-
   const params = {
     page: searchParams.get('page') || '1',
     id: searchParams.get('id') || '',
   };
 
-  useEffect(() => {
-    const fetchCharacterDetails = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          `https://swapi.dev/api/people/${params.id}/`
-        );
-        if (!response.ok) {
-          throw new Error('Failed to fetch character');
-        }
-        const data: IStarWarsCharacter = await response.json();
-        setCharacter(data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching character details:', error);
-        setLoading(false);
-      }
-    };
-
-    fetchCharacterDetails();
-  }, [params.id]);
+  const {
+    data: character,
+    isLoading,
+    isFetching,
+    isError,
+    error,
+  } = useGetCharacterDataQuery({
+    id: params.id,
+  });
 
   const handleClose = () => {
     navigate(`/?page=${params.page}`);
   };
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return <Loader />;
   }
 
@@ -55,10 +41,9 @@ export const DetailedView: React.FC = () => {
     );
   }
 
-  return (
-    <div className="detailed-section">
-      <CharacterCard character={character} />
-      <Button text="Close card" onClick={handleClose} />
-    </div>
-  );
+  if (isError) {
+    return <RouteError currentError={error} />;
+  }
+
+  return <CardWrapper character={character} handleClose={handleClose} />;
 };
