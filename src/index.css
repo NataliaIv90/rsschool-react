@@ -209,6 +209,16 @@ body {
   padding-left: 20px;
 }
 
+.search-results-item {
+  display: flex;
+  gap: 1rem;
+  justify-content: stretch;
+}
+
+.search-results-btn {
+  width: -webkit-fill-available;
+}
+
 @media screen and (max-width: 980px) {
   .cards {
     grid-template-columns: 280px 280px;

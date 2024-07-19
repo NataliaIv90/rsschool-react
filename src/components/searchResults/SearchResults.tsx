@@ -8,13 +8,22 @@ const SearchResults: React.FC<SearchResultsProps> = ({
 }) => (
   <div className="search-results">
     {results.map((character) => (
-      <Button
-        text={character.name}
-        key={character.name}
-        onClick={() =>
-          onCharacterSelect(character.url.split('/people/')[1].split('/')[0])
-        }
-      />
+      <div className="search-results-item" key={character.name}>
+        <input
+          className="search-results-checkbox"
+          type="checkbox"
+          name="selected-character"
+          id={character.name.replaceAll(' ', '')}
+        />
+        <Button
+          classNames="search-results-btn"
+          text={character.name}
+          key={character.name}
+          onClick={() =>
+            onCharacterSelect(character.url.split('/people/')[1].split('/')[0])
+          }
+        />
+      </div>
     ))}
   </div>
 );
