@@ -2,15 +2,11 @@ import { Outlet } from 'react-router-dom';
 import SearchInput from '../searchInput/SearchInput';
 import SearchResults from '../searchResults/SearchResults';
 import { Pagination } from '../pagination/Pagination';
-// import { Loader } from '../../shared/components/loader/Loader';
 import React from 'react';
 import { TResponseData, TVoidFunction } from '../../types/types';
 import { TParams } from './SearchPage';
-// import { useSelector } from 'react-redux';
 
 export type TSearchProps = {
-  // isLoading: boolean;
-  // isFetching: boolean;
   handleSearch: TVoidFunction;
   searchTerm: string;
   handleSearchTermChange: (searchTerm: string) => Promise<void>;
@@ -21,8 +17,6 @@ export type TSearchProps = {
 };
 
 export const Search: React.FC<TSearchProps> = ({
-  // isFetching,
-  // isLoading,
   handleSearch,
   searchTerm,
   handleSearchTermChange,
@@ -38,25 +32,23 @@ export const Search: React.FC<TSearchProps> = ({
       onSearchTermChange={handleSearchTermChange}
       isLoading={false}
     />
-    <div className="search-main-section">
-      {Array.isArray(results?.results) && results?.results?.length ? (
-        <>
+    {Array.isArray(results?.results) && results?.results?.length ? (
+      <>
+        <div className="search-main-section">
           <SearchResults
             results={results.results}
             onCharacterSelect={handleCharacterSelect}
           />
           <Outlet />
-        </>
-      ) : (
-        <p>No data to display</p>
-      )}
-    </div>
-    {Array.isArray(results?.results) && results?.results?.length ? (
-      <Pagination
-        count={results.count || 0}
-        currentPage={parseInt(params.page, 10)}
-        onPageChange={handlePageChange}
-      />
-    ) : null}
+        </div>
+        <Pagination
+          count={results.count || 0}
+          currentPage={parseInt(params.page, 10)}
+          onPageChange={handlePageChange}
+        />
+      </>
+    ) : (
+      <p>No data to display</p>
+    )}
   </div>
 );

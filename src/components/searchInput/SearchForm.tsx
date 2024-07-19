@@ -1,4 +1,4 @@
-import { TRootState } from '@/redux/store';
+import { RootState } from '@/redux/store';
 import { Button } from '../../shared/components/button/Button';
 import { TSearchForm } from '@/types/types';
 import React from 'react';
@@ -9,7 +9,7 @@ export const SearchForm: React.FC<TSearchForm> = ({
   searchTerm,
   handleInputChange,
 }) => {
-  const isLoading = useSelector((state: TRootState) => state.loader.isLoading);
+  const isLoading = useSelector((state: RootState) => state.loader.isLoading);
 
   return (
     <form className="search-form" onSubmit={handleFormSubmit}>
