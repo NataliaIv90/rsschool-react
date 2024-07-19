@@ -2,45 +2,16 @@ import { configureStore } from '@reduxjs/toolkit';
 import starWarsDataSlice from './slices/starWarsSlice';
 import { starWarsApiSlice } from './slices/starWarsApiSlice';
 import loaderReducer from './slices/loaderSlice';
-
-// export type TRootState = {
-//   loader: TLoaderState;
-//   starWarsStoreData: TStartWarsSliceState;
-//   starWarsApi: {
-//     getListData: QueryDefinition<
-//       TApiQueryProps,
-//       BaseQueryFn<
-//         string | FetchArgs,
-//         unknown,
-//         FetchBaseQueryError,
-//         object,
-//         FetchBaseQueryMeta
-//       >,
-//       never,
-//       TResponseData,
-//       'starWarsApi'
-//     >;
-//     getCharacterData: QueryDefinition<
-//       { id: string },
-//       BaseQueryFn<
-//         string | FetchArgs,
-//         unknown,
-//         FetchBaseQueryError,
-//         object,
-//         FetchBaseQueryMeta
-//       >,
-//       never,
-//       IStarWarsCharacter,
-//       'starWarsApi'
-//     >;
-//   };
-// };
+import currentPageItemsReducer from './slices/currentPageItemsSlice';
+import selectedItemDetailsReducer from './slices/selectedItemsDetailsSlice';
 
 export const store = configureStore({
   reducer: {
     loader: loaderReducer,
     starWarsStoreData: starWarsDataSlice,
     [starWarsApiSlice.reducerPath]: starWarsApiSlice.reducer,
+    currentPageItems: currentPageItemsReducer,
+    selectedItemDetails: selectedItemDetailsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(starWarsApiSlice.middleware),

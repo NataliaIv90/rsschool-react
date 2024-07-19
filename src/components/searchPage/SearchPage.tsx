@@ -6,6 +6,8 @@ import { useGetListDataQuery } from '../../redux/slices/starWarsApiSlice';
 import { RouteError } from '../routeError/RouteError';
 import { Search } from './SearchPageComponent';
 import { useLoading } from '../../shared/hooks/useLoading';
+import { useDispatch } from 'react-redux';
+import { setCurrentPageItems } from '../../redux/slices/currentPageItemsSlice';
 
 export type TParams = {
   page: string;
@@ -16,6 +18,7 @@ const SearchPage: React.FC = (): JSX.Element => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const page = searchParams.get('page') || '1';
+  const dispatch = useDispatch();
 
   const {
     data: results,
@@ -54,6 +57,12 @@ const SearchPage: React.FC = (): JSX.Element => {
     scrollToTop();
     navigate('/?page=1');
   }, [navigate]);
+
+  React.useEffect(() => {
+    if (results) {
+      dispatch(setCurrentPageItems(results));
+    }
+  }, [results, dispatch]);
 
   useLoading(isLoading, isFetching);
 
