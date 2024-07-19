@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useSaveSearchQuery } from '../../shared/hooks/useSaveSearchQuery';
 import { scrollToTop } from '../../shared/utils/scrollToTop';
@@ -11,13 +11,11 @@ export type TParams = {
   page: string;
 };
 
-export const SearchPage: React.FC = (): JSX.Element => {
+const SearchPage: React.FC = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = useSaveSearchQuery();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const params: TParams = {
-    page: searchParams.get('page') || '1',
-  };
+  const page = searchParams.get('page') || '1';
 
   const {
     data: results,
@@ -26,27 +24,36 @@ export const SearchPage: React.FC = (): JSX.Element => {
     error,
     isFetching,
   } = useGetListDataQuery({
-    page: params.page,
-    searchTerm: searchTerm,
+    page,
+    searchTerm,
   });
 
-  const handleSearchTermChange = async (searchTerm: string): Promise<void> => {
-    await setSearchTerm(searchTerm);
-  };
+  const handleSearchTermChange = useCallback(
+    async (newSearchTerm: string): Promise<void> => {
+      await setSearchTerm(newSearchTerm);
+    },
+    [setSearchTerm]
+  );
 
-  const handleCharacterSelect = (id: string) => {
-    navigate(`/details/?page=${params.page}&id=${id}`);
-  };
+  const handleCharacterSelect = useCallback(
+    (id: string) => {
+      navigate(`/details/?page=${page}&id=${id}`);
+    },
+    [navigate, page]
+  );
 
-  const handlePageChange = (page: number): void => {
-    scrollToTop();
-    navigate(`/?page=${page}`);
-  };
+  const handlePageChange = useCallback(
+    (newPage: number): void => {
+      scrollToTop();
+      navigate(`/?page=${newPage}`);
+    },
+    [navigate]
+  );
 
-  const handleSearch = (): void => {
+  const handleSearch = useCallback((): void => {
     scrollToTop();
     navigate('/?page=1');
-  };
+  }, [navigate]);
 
   useLoading(isLoading, isFetching);
 
@@ -61,8 +68,10 @@ export const SearchPage: React.FC = (): JSX.Element => {
       handleCharacterSelect={handleCharacterSelect}
       handleSearch={handleSearch}
       handleSearchTermChange={handleSearchTermChange}
-      params={params}
+      params={{ page }}
       searchTerm={searchTerm}
     />
   );
 };
+
+export default SearchPage;

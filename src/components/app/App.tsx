@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchPage } from '../searchPage/SearchPage';
+import SearchPage from '../searchPage/SearchPage';
 import { Loader } from '../../shared/components/loader/Loader';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
