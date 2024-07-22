@@ -4,8 +4,8 @@ import { characterCardData } from '../../assets/data/dataArrays';
 
 const CharacterCard: React.FC<ICharacterCardProps> = ({
   character,
-}): JSX.Element => (
-  <div className="character-card">
+}): React.JSX.Element => (
+  <article className="character-card">
     <div className="card-image"></div>
     <div className="card-content">
       <h2 className="card-title">{character.name}</h2>
@@ -18,7 +18,7 @@ const CharacterCard: React.FC<ICharacterCardProps> = ({
         </p>
       ))}
     </div>
-  </div>
+  </article>
 );
 
 export default CharacterCard;

@@ -4,16 +4,12 @@ import { useSaveSearchQuery } from '../../shared/hooks/useSaveSearchQuery';
 import { scrollToTop } from '../../shared/utils/scrollToTop';
 import { useGetListDataQuery } from '../../redux/slices/starWarsApiSlice';
 import { RouteError } from '../routeError/RouteError';
-import { Search } from './SearchPageComponent';
+import { Search } from './search/Search';
 import { useLoading } from '../../shared/hooks/useLoading';
 import { useDispatch } from 'react-redux';
 import { setCurrentPageItems } from '../../redux/slices/currentPageItemsSlice';
 
-export type TParams = {
-  page: string;
-};
-
-const SearchPage: React.FC = (): JSX.Element => {
+const SearchPage: React.FC = (): React.JSX.Element => {
   const [searchTerm, setSearchTerm] = useSaveSearchQuery();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();

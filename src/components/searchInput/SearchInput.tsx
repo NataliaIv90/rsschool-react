@@ -1,12 +1,12 @@
 import React, { ChangeEvent, useCallback, useState } from 'react';
 import { SearchInputProps } from '../../types/types';
-import { SearchForm } from './SearchForm';
+import { SearchForm } from './searchForm/SearchForm';
 
 const SearchInput: React.FC<SearchInputProps> = ({
   searchTerm: externalSearchTerm,
   onSearchTermChange,
   onSearch,
-}): JSX.Element => {
+}): React.JSX.Element => {
   const [searchTerm, setSearchTerm] = useState(externalSearchTerm);
 
   const handleInputChange = useCallback(

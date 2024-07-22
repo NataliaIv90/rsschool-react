@@ -11,13 +11,13 @@ export type TCardWrapper = {
 export const CardWrapper: React.FC<TCardWrapper> = ({
   character,
   handleClose,
-}) => (
-  <div className="detailed-section">
+}): React.JSX.Element => (
+  <section className="detailed-section">
     {character ? (
       <CharacterCard character={character} />
     ) : (
       <p>No character found.</p>
     )}
     <Button text="Close card" onClick={handleClose} />
-  </div>
+  </section>
 );

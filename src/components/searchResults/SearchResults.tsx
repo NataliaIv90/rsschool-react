@@ -1,20 +1,16 @@
 import React from 'react';
 import { SearchResultsProps } from '../../types/types';
 import { Button } from '../../shared/components/button/Button';
+import { CheckboxInput } from './checkboxInput/CheckboxInput';
 
 const SearchResults: React.FC<SearchResultsProps> = ({
   results,
   onCharacterSelect,
 }) => (
-  <div className="search-results">
+  <section className="search-results">
     {results.map((character) => (
-      <div className="search-results-item" key={character.name}>
-        <input
-          className="search-results-checkbox"
-          type="checkbox"
-          name="selected-character"
-          id={character.name.replaceAll(' ', '')}
-        />
+      <section className="search-results-item" key={character.name}>
+        <CheckboxInput character={character} />
         <Button
           classNames="search-results-btn"
           text={character.name}
@@ -23,9 +19,9 @@ const SearchResults: React.FC<SearchResultsProps> = ({
             onCharacterSelect(character.url.split('/people/')[1].split('/')[0])
           }
         />
-      </div>
+      </section>
     ))}
-  </div>
+  </section>
 );
 
 export default SearchResults;

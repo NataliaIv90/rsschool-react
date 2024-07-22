@@ -6,7 +6,9 @@ export type TRouteError = {
   currentError?: string | object;
 };
 
-export const RouteError: React.FC<TRouteError> = ({ currentError }) => {
+export const RouteError: React.FC<TRouteError> = ({
+  currentError,
+}): React.JSX.Element => {
   const error = useRouteError();
   console.error(error);
 

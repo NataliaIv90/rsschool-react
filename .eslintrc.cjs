@@ -10,19 +10,17 @@ module.exports = {
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh', 'react', 'react-compiler', '@typescript-eslint', 'prettier'],
+  plugins: ['react-refresh', 'react', '@typescript-eslint', 'prettier'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
     '@typescript-eslint/no-explicit-any': 'error',
-    'react/react-in-jsx-scope': 'error',
-    'react-compiler/react-compiler': 'error',
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
-      { varsIgnorePattern: '^React$' },
+      { varsIgnorePattern: '^(React|_)$' },
     ],
     'prettier/prettier': 'error',
   },
@@ -31,4 +29,4 @@ module.exports = {
       version: 'detect',
     },
   },
-}
+};

@@ -34,10 +34,6 @@ export interface SearchInputProps {
   isLoading: boolean;
 }
 
-export interface SearchResultsProps {
-  results: IStarWarsCharacter[];
-}
-
 export interface IPagination {
   currentPage: number;
   count: number;
@@ -92,4 +88,18 @@ export type TResponseData = {
 export type TApiQueryProps = {
   page: string;
   searchTerm: string;
+};
+
+export type TSearchProps = {
+  handleSearch: TVoidFunction;
+  searchTerm: string;
+  handleSearchTermChange: (searchTerm: string) => Promise<void>;
+  results?: TResponseData;
+  handleCharacterSelect: (id: string) => void;
+  params: TParams;
+  handlePageChange: (page: number) => void;
+};
+
+export type TParams = {
+  page: string;
 };

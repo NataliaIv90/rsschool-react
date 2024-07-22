@@ -5,7 +5,7 @@ import { RouteError } from '../routeError/RouteError';
 import { CardWrapper } from './CardWrapper';
 import { useLoading } from '../../shared/hooks/useLoading';
 
-export const DetailedView: React.FC = () => {
+export const DetailedView: React.FC = (): React.JSX.Element => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const params = {

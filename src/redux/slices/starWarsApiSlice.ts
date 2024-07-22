@@ -10,6 +10,7 @@ const baseUrl = 'https://swapi.dev/api/';
 export const starWarsApiSlice = createApi({
   reducerPath: 'starWarsApi',
   baseQuery: fetchBaseQuery({ baseUrl }),
+  refetchOnMountOrArgChange: 60,
   endpoints: (builder) => ({
     getListData: builder.query<TResponseData, TApiQueryProps>({
       query: ({ page, searchTerm }) =>

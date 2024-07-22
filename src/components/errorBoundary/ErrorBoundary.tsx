@@ -14,7 +14,6 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       error: error,
       errorInfo: errorInfo,
     });
-    // Log error to console
     console.error('Error caught in ErrorBoundary:', error, errorInfo);
   }
 

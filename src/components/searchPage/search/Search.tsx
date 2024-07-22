@@ -1,20 +1,9 @@
 import { Outlet } from 'react-router-dom';
-import SearchInput from '../searchInput/SearchInput';
-import SearchResults from '../searchResults/SearchResults';
-import { Pagination } from '../pagination/Pagination';
+import SearchInput from '../../searchInput/SearchInput';
+import SearchResults from '../../searchResults/SearchResults';
+import { Pagination } from '../../pagination/Pagination';
 import React from 'react';
-import { TResponseData, TVoidFunction } from '../../types/types';
-import { TParams } from './SearchPage';
-
-export type TSearchProps = {
-  handleSearch: TVoidFunction;
-  searchTerm: string;
-  handleSearchTermChange: (searchTerm: string) => Promise<void>;
-  results?: TResponseData;
-  handleCharacterSelect: (id: string) => void;
-  params: TParams;
-  handlePageChange: (page: number) => void;
-};
+import { TSearchProps } from '../../../types/types';
 
 export const Search: React.FC<TSearchProps> = ({
   handleSearch,
@@ -24,7 +13,7 @@ export const Search: React.FC<TSearchProps> = ({
   handleCharacterSelect,
   params,
   handlePageChange,
-}) => (
+}): React.JSX.Element => (
   <div className="search-page">
     <SearchInput
       onSearch={handleSearch}

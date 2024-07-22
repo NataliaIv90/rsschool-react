@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IStarWarsCharacter } from '../../types/types';
 
 type SelectedItemsDetailsState = {
-  items: IStarWarsCharacter[] | null;
+  items: { [key: string]: IStarWarsCharacter } | null;
 };
 
 const initialState: SelectedItemsDetailsState = {
@@ -14,19 +14,19 @@ const selectedItemDetailsSlice = createSlice({
   initialState,
   reducers: {
     setSelectedItem(state, action: PayloadAction<IStarWarsCharacter>) {
-      state.items = state.items
-        ? [...state.items, action.payload]
-        : [action.payload];
+      if (!state.items) {
+        state.items = {};
+      }
+      state.items[action.payload.name] = action.payload;
     },
     removeSelectedItemByName(state, action: PayloadAction<string>) {
       if (state.items) {
-        state.items = state.items.filter(
-          (item) => item.name !== action.payload
-        );
+        const { [action.payload]: _, ...rest } = state.items;
+        state.items = Object.keys(rest).length ? rest : null;
       }
     },
     clearAllSelectedItems(state) {
-      state.items = [];
+      state.items = null;
     },
   },
 });
