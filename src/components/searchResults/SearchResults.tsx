@@ -7,9 +7,9 @@ const SearchResults: React.FC<SearchResultsProps> = ({
   results,
   onCharacterSelect,
 }) => (
-  <section className="search-results">
+  <ul className="search-results">
     {results.map((character) => (
-      <section className="search-results-item" key={character.name}>
+      <li className="search-results-item" key={character.name}>
         <CheckboxInput character={character} />
         <Button
           classNames="search-results-btn"
@@ -19,9 +19,9 @@ const SearchResults: React.FC<SearchResultsProps> = ({
             onCharacterSelect(character.url.split('/people/')[1].split('/')[0])
           }
         />
-      </section>
+      </li>
     ))}
-  </section>
+  </ul>
 );
 
 export default SearchResults;

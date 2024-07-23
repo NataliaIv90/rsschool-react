@@ -103,3 +103,8 @@ export type TSearchProps = {
 export type TParams = {
   page: string;
 };
+
+export enum EContextValue {
+  DARK = 'dark',
+  LIGHT = 'light',
+}

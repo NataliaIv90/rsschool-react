@@ -1,4 +1,4 @@
-:root {
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -7,6 +7,40 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --basic-grey: #3a3838;
+  --basic-grey-light: #4b4b4b;
+  --basic-white: #e6e6e6;
+  --basic-yellow: #f8dc49;
+  --basic-yellow-light: #ffed8c;
+  --basic-blue: #13139c;
+  --bkg-color: #cdcccc;
+} */
+
+/* index.css */
+
+/* :root {
+  --basic-grey: #3a3838;
+  --basic-grey-light: #4b4b4b;
+  --basic-white: #e6e6e6;
+  --basic-yellow: #f8dc49;
+  --basic-yellow-light: #ffed8c;
+  --basic-blue: #13139c;
+  --bkg-color: #cdcccc;
+  color: var(--basic-grey);
+} */
+
+.dark-theme {
+  --basic-grey: #a6a6a6;
+  --basic-grey-light: #f6f6f6;
+  --basic-white: #454444;
+  --basic-yellow: #8282e7;
+  --basic-yellow-light: #ffed8c;
+  --basic-blue: #fadf04;
+  --bkg-color: #1d1b1b;
+  color: var(--basic-white);
+}
+
+.light-theme {
   --basic-grey: #3a3838;
   --basic-grey-light: #4b4b4b;
   --basic-white: #e6e6e6;
@@ -68,6 +102,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding-top: 1rem;
 }
 
 .search-form {
@@ -124,6 +159,16 @@ body {
   background-color: var(--basic-grey);
   color: var(--bkg-color);
   width: 300px;
+}
+
+.character-card.dark {
+  color: var(--basic-grey-light);
+  box-shadow: 8px 8px var(--basic-blue);
+}
+
+.character-card.dark h2 {
+  color: var(--basic-blue);
+  text-shadow: 3px 3px var(--basic-yellow);
 }
 
 .character-card:hover {
@@ -235,9 +280,29 @@ body {
   color: var(--basic-blue);
 }
 
+.theme-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.error-boundary-btn {
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
+
 @media screen and (max-width: 980px) {
   .cards {
     grid-template-columns: 280px 280px;
+    gap: 1rem;
+  }
+
+  .character-card {
+    width: 280px;
+  }
+
+  .search-main-section {
     gap: 1rem;
   }
 }
@@ -253,7 +318,7 @@ body {
   }
 
   .character-card {
-    width: 300px;
+    width: 280px;
     margin-bottom: 2rem;
   }
 
@@ -264,5 +329,10 @@ body {
 
   .form-input {
     width: auto;
+  }
+
+  .search-main-section {
+    display: flex;
+    justify-content: center;
   }
 }
