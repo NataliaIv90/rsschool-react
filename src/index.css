@@ -8,7 +8,6 @@
   --bkg-color: #cdcccc;
 }
 
-
 .dark-theme {
   --basic-grey: #a6a6a6;
   --basic-grey-light: #f6f6f6;
@@ -19,6 +18,7 @@
   --bkg-color: #1d1b1b;
   color: var(--basic-white);
   background: var(--bkg-color);
+  min-height: 100vh;
 }
 
 .light-theme {
@@ -29,6 +29,7 @@
   --basic-yellow-light: #ffed8c;
   --basic-blue: #13139c;
   --bkg-color: #cdcccc;
+  min-height: 100vh;
 }
 
 * {
@@ -83,7 +84,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .search-form {

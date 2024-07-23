@@ -11,5 +11,15 @@
       "@/*": ["src/*"]
     },
     "types": ["node", "vite/client"]
-  }
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "exclude": ["node_modules", "__tests__", "vite.config.ts"]
 }
