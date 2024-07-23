@@ -1,10 +1,5 @@
 import { EContextValue, ThemeContextType } from '../../../types/types';
-import React, {
-  PropsWithChildren,
-  ReactNode,
-  useState,
-  useEffect,
-} from 'react';
+import React, { PropsWithChildren, ReactNode, useState } from 'react';
 
 export const ThemeContext = React.createContext<ThemeContextType | undefined>(
   undefined
@@ -27,20 +22,13 @@ export const ThemeProvider: React.FC<
     );
   };
 
-  useEffect(() => {
-    const root = document.body;
-    if (theme === EContextValue.DARK) {
-      root.classList.add('dark-theme');
-      root.classList.remove('light-theme');
-    } else {
-      root.classList.add('light-theme');
-      root.classList.remove('dark-theme');
-    }
-  }, [theme]);
-
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
+      <div
+        className={theme === EContextValue.LIGHT ? 'light-theme' : 'dark-theme'}
+      >
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 };
