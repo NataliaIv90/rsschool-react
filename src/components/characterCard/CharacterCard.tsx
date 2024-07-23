@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { ICharacterCardProps } from '../../types/types';
 import { characterCardData } from '../../assets/data/dataArrays';
-import { ThemeContext } from '../app/App';
 import { EContextValue } from '../../types/types';
+import { useTheme } from '../../shared/context/themeContext/useTheme';
 
 const CharacterCard: React.FC<ICharacterCardProps> = ({
   character,
 }): React.JSX.Element => {
-  const theme = useContext(ThemeContext)?.theme;
+  const theme = useTheme().theme;
 
   return (
     <article

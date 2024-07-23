@@ -108,3 +108,8 @@ export enum EContextValue {
   DARK = 'dark',
   LIGHT = 'light',
 }
+
+export interface ThemeContextType {
+  theme: EContextValue;
+  toggleTheme: () => void;
+}
