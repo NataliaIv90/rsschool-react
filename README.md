@@ -10,15 +10,17 @@ The project is structured to follow modern best practices, using ESLint and Pret
 
 ## Scripts
 
-+ **dev**: Starts the development server using Vite.
-+ **build**: Compiles TypeScript and builds the application using Vite.
-+ **lint**: Runs ESLint on the ./src/ directory.
-+ **lint:fix**: Runs ESLint with the --fix flag on the ./src/ directory.
-+ **preview**: Previews the production build locally.
-+ **format**: Formats the codebase using Prettier.
-+ **format:fix**: Formats the codebase and additional files using Prettier.
-+ **precommit**: Runs format and lint scripts before committing changes.
-+ **prepare**: Husky hook installation script.
+- **dev**: Starts the development server using Vite.
+- **build**: Compiles TypeScript and builds the application using Vite.
+- **lint**: Runs ESLint on the ./src/ directory.
+- **lint:fix**: Runs ESLint with the --fix flag on the ./src/ directory.
+- **preview**: Previews the production build locally.
+- **format**: Formats the codebase using Prettier.
+- **format:fix**: Formats the codebase and additional files using Prettier.
+- **precommit**: Runs format and lint scripts before committing changes.
+- **prepare**: Husky hook installation script.
+- **test**: Run tests.
+- **coverage**: Provide coverage report from v8.
 
 ## Husky
 
@@ -34,15 +36,16 @@ Prettier is used to format the codebase, ensuring a consistent coding style. The
 
 ## Running the Project
 
-+ Install Dependencies:
+- Install Dependencies:
 
 npm install
 
-+ Start Development Server:
+- Start Development Server:
 
 npm run dev
 
 ## Usage
+
 The application fetches data from the Star Wars API and displays information about characters, including their name, height, mass, and other attributes. Users can navigate through different characters using React Router.
 
 ## About me
