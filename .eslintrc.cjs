@@ -1,14 +1,23 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  env: {
+    browser: true,
+    es2020: true,
+  },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'plugin:react/recommended',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    'plugin:react/jsx-runtime',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'vitest.config.ts'],
+  ignorePatterns: [
+    'dist',
+    '.eslintrc.cjs',
+    'vite.config.ts',
+    'vitest.config.ts',
+  ],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'react', '@typescript-eslint', 'prettier'],
   rules: {
@@ -18,10 +27,7 @@ module.exports = {
     ],
     '@typescript-eslint/no-explicit-any': 'error',
     'react/react-in-jsx-scope': 'off',
-    '@typescript-eslint/no-unused-vars': [
-      'error',
-      { varsIgnorePattern: '^(React|_)$' },
-    ],
+    '@typescript-eslint/no-unused-vars': 'off',
     'prettier/prettier': 'error',
   },
   settings: {

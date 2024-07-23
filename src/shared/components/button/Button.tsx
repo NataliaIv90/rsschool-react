@@ -1,6 +1,6 @@
 import React from 'react';
 
-type TButtonProps<T = void> = {
+export type TButtonProps<T = void> = {
   onClick?: () => T;
   onEventClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   text: string;

@@ -1,4 +1,4 @@
-import { IStarWarsCharacter } from '../../types/types';
+import { IStarWarsCharacter } from '../../../types/types';
 
 export function getKeysToPrint<T extends object>(obj: T) {
   const arr: IStarWarsCharacter[] = Object.values(obj);

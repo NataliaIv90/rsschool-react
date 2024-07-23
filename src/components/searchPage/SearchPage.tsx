@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useSaveSearchQuery } from '../../shared/hooks/useSaveSearchQuery';
-import { scrollToTop } from '../../shared/utils/scrollToTop';
+import { scrollToTop } from '../../shared/utils/scrollToTop/scrollToTop';
 import { useGetListDataQuery } from '../../redux/slices/starWarsApiSlice';
 import { RouteError } from '../routeError/RouteError';
 import { Search } from './search/Search';

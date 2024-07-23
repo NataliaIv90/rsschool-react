@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { createAndDownloadFile } from '../utils/createAndDownloadFile';
-import { createCSVRows } from '../utils/createCSVRows';
+import { createAndDownloadFile } from '../utils/createAndDownloadFile/createAndDownloadFile';
+import { createCSVRows } from '../utils/createCSVRows/createCSVRows';
 import { RootState } from '../../redux/store';
 
 export const useHandleDownload = () => {
