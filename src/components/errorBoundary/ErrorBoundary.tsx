@@ -17,20 +17,31 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     console.error('Error caught in ErrorBoundary:', error, errorInfo);
   }
 
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
   handleThrowError = () => {
-    throw new Error('This is a test error thrown from ErrorBoundary.');
+    (async () => {
+      throw new Error('This is a test error thrown from ErrorBoundary.');
+    })().catch((error) => {
+      this.setState({
+        hasError: true,
+        error: error,
+      });
+    });
   };
 
   render() {
     if (this.state.hasError) {
       return (
-        <div>
+        <div className="error-boundary">
           <h2>Something went wrong.</h2>
-          <details style={{ whiteSpace: 'pre-wrap' }}>
-            {this.state.error && this.state.error.toString()}
-            <br />
-            {this.state.errorInfo && this.state.errorInfo.componentStack}
-          </details>
+          {this.state.error && this.state.error.toString()}
+          {this.state.errorInfo && this.state.errorInfo.componentStack}
+          <a href="/">
+            <button className="btn">Go to the home page</button>
+          </a>
         </div>
       );
     }
