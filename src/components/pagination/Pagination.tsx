@@ -29,6 +29,7 @@ export const Pagination: FC<IPagination> = ({
         value={currentPage}
         className="pagination-select"
         onChange={(e) => onPageChange(Number(e.target.value))}
+        data-testid="pagination-select"
       >
         {pages.map((page) => (
           <option key={page} value={page}>

@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "ES2021",
+    "lib": ["DOM", "ES2021"],
     "module": "esnext",
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "strict": true,
     "moduleResolution": "node",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     },

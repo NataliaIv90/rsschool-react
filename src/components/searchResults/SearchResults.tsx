@@ -3,7 +3,7 @@ import { SearchResultsProps } from '../../types/types';
 import { Button } from '../../shared/components/button/Button';
 import { CheckboxInput } from './checkboxInput/CheckboxInput';
 
-const SearchResults: React.FC<SearchResultsProps> = ({
+export const SearchResults: React.FC<SearchResultsProps> = ({
   results,
   onCharacterSelect,
 }) => (
