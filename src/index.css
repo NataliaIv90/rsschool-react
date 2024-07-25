@@ -19,6 +19,7 @@
   color: var(--basic-white);
   background: var(--bkg-color);
   min-height: 100vh;
+  width: 100%;
 }
 
 .light-theme {
@@ -30,6 +31,7 @@
   --basic-blue: #13139c;
   --bkg-color: #cdcccc;
   min-height: 100vh;
+  width: 100%;
 }
 
 * {
@@ -84,7 +86,6 @@ body {
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  /* min-height: 100vh; */
 }
 
 .search-form {
