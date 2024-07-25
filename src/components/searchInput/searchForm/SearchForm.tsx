@@ -12,7 +12,11 @@ export const SearchForm: React.FC<TSearchForm> = ({
   const isLoading = useSelector((state: RootState) => state.loader.isLoading);
 
   return (
-    <form className="search-form" onSubmit={handleFormSubmit}>
+    <form
+      className="search-form"
+      onSubmit={handleFormSubmit}
+      data-testid="search-form"
+    >
       <input
         type="text"
         value={searchTerm}

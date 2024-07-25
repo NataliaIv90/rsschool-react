@@ -31,7 +31,7 @@ export interface SearchInputProps {
   searchTerm: string;
   onSearchTermChange: TOnSearchTermChange;
   onSearch: TVoidFunction;
-  isLoading: boolean;
+  // isLoading: boolean;
 }
 
 export interface IPagination {
