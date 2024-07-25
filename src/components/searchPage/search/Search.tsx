@@ -19,7 +19,6 @@ export const Search: React.FC<TSearchProps> = ({
       onSearch={handleSearch}
       searchTerm={searchTerm}
       onSearchTermChange={handleSearchTermChange}
-      isLoading={false}
     />
     {Array.isArray(results?.results) && results?.results?.length ? (
       <>

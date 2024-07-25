@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { starWarsApiSlice } from './slices/starWarsApiSlice';
 import loaderReducer from './slices/loaderSlice';
 import currentPageItemsReducer from './slices/currentPageItemsSlice';
@@ -13,6 +13,13 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(starWarsApiSlice.middleware),
+});
+
+export const rootReducer = combineReducers({
+  loader: loaderReducer,
+  [starWarsApiSlice.reducerPath]: starWarsApiSlice.reducer,
+  currentPageItems: currentPageItemsReducer,
+  selectedItemDetails: selectedItemDetailsReducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

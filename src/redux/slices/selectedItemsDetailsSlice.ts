@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IStarWarsCharacter } from '../../types/types';
 
-type SelectedItemsDetailsState = {
+export type SelectedItemsDetailsState = {
   items: { [key: string]: IStarWarsCharacter } | null;
 };
 

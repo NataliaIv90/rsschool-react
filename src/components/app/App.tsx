@@ -4,7 +4,7 @@ import { Loader } from '../../shared/components/loader/Loader';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { FlyoutElement } from '../flyoutElement/FlyoutElement';
-import { EContextValue } from '@/types/types';
+import { EContextValue } from '../../types/types';
 import { Button } from '../../shared/components/button/Button';
 import { useTheme } from '../../shared/context/themeContext/useTheme';
 
