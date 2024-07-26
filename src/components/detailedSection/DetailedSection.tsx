@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useGetCharacterDataQuery } from '../../redux/slices/starWarsApiSlice';
 import { RouteError } from '../routeError/RouteError';
-import { CardWrapper } from './CardWrapper';
+import { CardWrapper } from './cardWrapper/CardWrapper';
 import { useLoading } from '../../shared/hooks/useLoading';
 
 export const DetailedView: React.FC = (): React.JSX.Element => {

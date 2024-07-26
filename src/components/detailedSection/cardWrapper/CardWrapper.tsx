@@ -1,7 +1,7 @@
 import React from 'react';
-import CharacterCard from '../characterCard/CharacterCard';
-import { Button } from '../../shared/components/button/Button';
-import { IStarWarsCharacter, TVoidFunction } from '../../types/types';
+import CharacterCard from '../../characterCard/CharacterCard';
+import { Button } from '../../../shared/components/button/Button';
+import { IStarWarsCharacter, TVoidFunction } from '../../../types/types';
 
 export type TCardWrapper = {
   character?: IStarWarsCharacter;
