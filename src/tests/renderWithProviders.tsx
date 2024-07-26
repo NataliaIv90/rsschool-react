@@ -8,12 +8,12 @@ import {
 } from '@reduxjs/toolkit';
 
 import { ThemeProvider } from '../shared/context/themeContext/ThemeContext';
-import { rootReducer, store as defaultStore, RootState } from '../redux/store';
+import { rootReducer, RootState } from '../redux/store';
 
 // Define the type for your custom render options
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   initialState?: PreloadedStateShapeFromReducersMapObject<RootState>;
-  store?: typeof defaultStore;
+  store?: ReturnType<typeof configureStore>;
 }
 
 const renderWithProviders = (
@@ -23,6 +23,8 @@ const renderWithProviders = (
     store = configureStore({
       reducer: rootReducer,
       preloadedState: initialState,
+      middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(/* any additional middleware if needed */),
     }),
     ...renderOptions
   }: ExtendedRenderOptions = {}
@@ -43,18 +45,37 @@ export default renderWithProviders;
 // import { ReactElement } from 'react';
 // import { Provider } from 'react-redux';
 // import { BrowserRouter } from 'react-router-dom';
+// import {
+//   configureStore,
+//   PreloadedStateShapeFromReducersMapObject,
+// } from '@reduxjs/toolkit';
 
 // import { ThemeProvider } from '../shared/context/themeContext/ThemeContext';
-// import { store } from '../redux/store';
+// import { rootReducer, store as defaultStore, RootState } from '../redux/store';
 
-// const renderWithProviders = (ui: ReactElement, options?: RenderOptions) => {
+// interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
+//   initialState?: PreloadedStateShapeFromReducersMapObject<RootState>;
+//   store?: typeof defaultStore;
+// }
+
+// const renderWithProviders = (
+//   ui: ReactElement,
+//   {
+//     initialState,
+//     store = configureStore({
+//       reducer: rootReducer,
+//       preloadedState: initialState,
+//     }),
+//     ...renderOptions
+//   }: ExtendedRenderOptions = {}
+// ) => {
 //   return render(
 //     <Provider store={store}>
 //       <BrowserRouter>
 //         <ThemeProvider>{ui}</ThemeProvider>
 //       </BrowserRouter>
 //     </Provider>,
-//     options
+//     renderOptions
 //   );
 // };
 
