@@ -3,7 +3,6 @@ import { describe, it, expect, vi } from 'vitest';
 import { RouteError, TRouteError } from './RouteError';
 import { BrowserRouter as Router, useRouteError } from 'react-router-dom';
 
-// Mock `useRouteError` hook from 'react-router-dom'
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom');
   return {
@@ -14,7 +13,6 @@ vi.mock('react-router-dom', async () => {
 
 describe('RouteError Component', () => {
   it('renders error message from `useRouteError` when an error occurs', () => {
-    // Setup mock for `useRouteError`
     vi.mocked(useRouteError).mockReturnValue({
       statusText: 'Not Found',
     });
@@ -69,7 +67,6 @@ describe('RouteError Component', () => {
   });
 
   it('renders error message an error occurs', () => {
-    // Mock the error object returned by `useRouteError`
     const mockError = {
       status: 404,
       statusText: 'Not Found',

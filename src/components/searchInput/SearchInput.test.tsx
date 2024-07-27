@@ -48,12 +48,10 @@ describe('SearchInput', () => {
       />
     );
 
-    // Simulate input change
     fireEvent.change(screen.getByPlaceholderText('Enter the query...'), {
       target: { value: 'new value' },
     });
 
-    // Ensure that the input value has updated
     expect(screen.getByPlaceholderText('Enter the query...')).toHaveValue(
       'new value'
     );

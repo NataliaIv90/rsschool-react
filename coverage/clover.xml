@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1722109779541" clover="3.2.0">
-  <project timestamp="1722109779541" name="All files">
-    <metrics statements="914" coveredstatements="833" conditionals="104" coveredconditionals="90" methods="52" coveredmethods="45" elements="1070" coveredelements="968" complexity="0" loc="914" ncloc="914" packages="30" files="39" classes="39"/>
+<coverage generated="1722119134539" clover="3.2.0">
+  <project timestamp="1722119134539" name="All files">
+    <metrics statements="915" coveredstatements="842" conditionals="110" coveredconditionals="98" methods="52" coveredmethods="46" elements="1077" coveredelements="986" complexity="0" loc="915" ncloc="915" packages="30" files="39" classes="39"/>
     <package name="src">
       <metrics statements="20" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="main.tsx" path="D:\vs-code\rsschool\new-react\rsschool-react\src\main.tsx">
@@ -749,9 +749,9 @@
       </file>
     </package>
     <package name="src.shared.context.themeContext">
-      <metrics statements="32" coveredstatements="24" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="2"/>
+      <metrics statements="33" coveredstatements="33" conditionals="10" coveredconditionals="10" methods="3" coveredmethods="3"/>
       <file name="ThemeContext.tsx" path="D:\vs-code\rsschool\new-react\rsschool-react\src\shared\context\themeContext\ThemeContext.tsx">
-        <metrics statements="23" coveredstatements="17" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="1"/>
+        <metrics statements="23" coveredstatements="23" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -759,34 +759,35 @@
         <line num="6" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="14" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="15" count="16" type="stmt"/>
-        <line num="17" count="16" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="25" count="16" type="stmt"/>
-        <line num="26" count="16" type="stmt"/>
-        <line num="27" count="16" type="stmt"/>
-        <line num="28" count="16" type="cond" truecount="0" falsecount="1"/>
-        <line num="30" count="16" type="stmt"/>
-        <line num="31" count="16" type="stmt"/>
-        <line num="32" count="16" type="stmt"/>
-        <line num="34" count="16" type="stmt"/>
+        <line num="15" count="26" type="stmt"/>
+        <line num="17" count="26" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="25" count="26" type="stmt"/>
+        <line num="26" count="26" type="stmt"/>
+        <line num="27" count="26" type="stmt"/>
+        <line num="28" count="26" type="cond" truecount="2" falsecount="0"/>
+        <line num="30" count="26" type="stmt"/>
+        <line num="31" count="26" type="stmt"/>
+        <line num="32" count="26" type="stmt"/>
+        <line num="34" count="26" type="stmt"/>
       </file>
       <file name="useTheme.ts" path="D:\vs-code\rsschool\new-react\rsschool-react\src\shared\context\themeContext\useTheme.ts">
-        <metrics statements="9" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="10" coveredstatements="10" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="5" count="4" type="stmt"/>
-        <line num="6" count="4" type="cond" truecount="0" falsecount="1"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
-        <line num="10" count="4" type="stmt"/>
+        <line num="5" count="9" type="stmt"/>
+        <line num="6" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="8" type="stmt"/>
+        <line num="11" count="8" type="stmt"/>
       </file>
     </package>
     <package name="src.shared.hooks">
