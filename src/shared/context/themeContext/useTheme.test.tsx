@@ -44,7 +44,7 @@ describe('useTheme hook', () => {
   it('should log an error if useTheme is used outside of a ThemeProvider', () => {
     const consoleError = vi
       .spyOn(console, 'error')
-      .mockImplementation(() => { });
+      .mockImplementation(() => {});
 
     const TestComponent = () => {
       try {

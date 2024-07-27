@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">81.25% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/16</span>
+                <span class='fraction'>13/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">81.25% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/16</span>
+                <span class='fraction'>13/16</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -83,46 +83,46 @@
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { useSelector } from 'react-redux';</span></span></span>
-<span class="cstat-no" title="statement not covered" >import { createAndDownloadFile } from '../utils/createAndDownloadFile/createAndDownloadFile';</span>
-<span class="cstat-no" title="statement not covered" >import { createCSVRows } from '../utils/createCSVRows/createCSVRows';</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useSelector } from 'react-redux';
+import { createAndDownloadFile } from '../utils/createAndDownloadFile/createAndDownloadFile';
+import { createCSVRows } from '../utils/createCSVRows/createCSVRows';
 import { RootState } from '../../redux/store';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const useHandleDownload = () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  const selectedItems = useSelector(</span>
-<span class="cstat-no" title="statement not covered" >    (state: RootState) =&gt; state.selectedItemDetails.items</span>
-<span class="cstat-no" title="statement not covered" >  );</span>
+export const useHandleDownload = () =&gt; {
+  const selectedItems = useSelector(
+    (state: RootState) =&gt; state.selectedItemDetails.items
+  );
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (!selectedItems) return;</span>
+  return () =&gt; {
+    if (!selectedItems) <span class="branch-0 cbranch-no" title="branch not covered" >return;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    const selectedItemsLength = selectedItems</span>
-<span class="cstat-no" title="statement not covered" >      ? Object.keys(selectedItems).length</span>
+<span class="cstat-no" title="statement not covered" >      ? Object.keys(selectedItems).<span class="branch-0 cbranch-no" title="branch not covered" >length</span></span>
 <span class="cstat-no" title="statement not covered" >      : 0;</span>
-<span class="cstat-no" title="statement not covered" >    const csvContent = createCSVRows(selectedItems);</span>
-<span class="cstat-no" title="statement not covered" >    createAndDownloadFile(csvContent, selectedItemsLength);</span>
-<span class="cstat-no" title="statement not covered" >  };</span>
-<span class="cstat-no" title="statement not covered" >};</span>
+    const csvContent = createCSVRows(selectedItems);
+    createAndDownloadFile(csvContent, selectedItemsLength);
+  };
+};
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -130,7 +130,7 @@ import { RootState } from '../../redux/store';
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-27T22:25:34.215Z
+                at 2024-07-27T23:21:02.982Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

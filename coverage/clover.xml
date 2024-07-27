@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1722119134539" clover="3.2.0">
-  <project timestamp="1722119134539" name="All files">
-    <metrics statements="915" coveredstatements="842" conditionals="110" coveredconditionals="98" methods="52" coveredmethods="46" elements="1077" coveredelements="986" complexity="0" loc="915" ncloc="915" packages="30" files="39" classes="39"/>
+<coverage generated="1722122463227" clover="3.2.0">
+  <project timestamp="1722122463227" name="All files">
+    <metrics statements="914" coveredstatements="879" conditionals="113" coveredconditionals="102" methods="51" coveredmethods="48" elements="1078" coveredelements="1029" complexity="0" loc="914" ncloc="914" packages="30" files="39" classes="39"/>
     <package name="src">
       <metrics statements="20" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="main.tsx" path="D:\vs-code\rsschool\new-react\rsschool-react\src\main.tsx">
@@ -689,26 +689,26 @@
       </file>
     </package>
     <package name="src.routes">
-      <metrics statements="17" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="routes.tsx" path="D:\vs-code\rsschool\new-react\rsschool-react\src\routes\routes.tsx">
-        <metrics statements="17" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
+        <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.shared.components.button">
@@ -791,7 +791,7 @@
       </file>
     </package>
     <package name="src.shared.hooks">
-      <metrics statements="58" coveredstatements="32" conditionals="11" coveredconditionals="7" methods="5" coveredmethods="3"/>
+      <metrics statements="58" coveredstatements="53" conditionals="15" coveredconditionals="11" methods="5" coveredmethods="5"/>
       <file name="useGetSelectedItemsLength.ts" path="D:\vs-code\rsschool\new-react\rsschool-react\src\shared\hooks\useGetSelectedItemsLength.ts">
         <metrics statements="11" coveredstatements="10" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -807,34 +807,34 @@
         <line num="14" count="2" type="stmt"/>
       </file>
       <file name="useHandleClearAllSelectedItems.ts" path="D:\vs-code\rsschool\new-react\rsschool-react\src\shared\hooks\useHandleClearAllSelectedItems.ts">
-        <metrics statements="8" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
       </file>
       <file name="useHandleDownload.ts" path="D:\vs-code\rsschool\new-react\rsschool-react\src\shared\hooks\useHandleDownload.ts">
-        <metrics statements="16" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
+        <metrics statements="16" coveredstatements="13" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
+        <line num="15" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
       </file>
       <file name="useLoading.ts" path="D:\vs-code\rsschool\new-react\rsschool-react\src\shared\hooks\useLoading.ts">
         <metrics statements="13" coveredstatements="12" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
@@ -940,23 +940,24 @@
       </file>
     </package>
     <package name="src.tests">
-      <metrics statements="32" coveredstatements="32" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
+      <metrics statements="31" coveredstatements="31" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
       <file name="renderWithProviders.tsx" path="D:\vs-code\rsschool\new-react\rsschool-react\src\tests\renderWithProviders.tsx">
-        <metrics statements="29" coveredstatements="29" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <metrics statements="28" coveredstatements="28" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="19" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="14" type="stmt"/>
         <line num="20" count="14" type="stmt"/>
         <line num="21" count="14" type="stmt"/>
         <line num="22" count="14" type="stmt"/>
         <line num="23" count="14" type="stmt"/>
         <line num="24" count="14" type="stmt"/>
-        <line num="25" count="14" type="stmt"/>
-        <line num="26" count="14" type="cond" truecount="1" falsecount="0"/>
+        <line num="25" count="14" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="14" type="stmt"/>
         <line num="27" count="14" type="stmt"/>
         <line num="28" count="14" type="stmt"/>
         <line num="29" count="14" type="stmt"/>
@@ -969,9 +970,7 @@
         <line num="36" count="14" type="stmt"/>
         <line num="37" count="14" type="stmt"/>
         <line num="38" count="14" type="stmt"/>
-        <line num="39" count="14" type="stmt"/>
-        <line num="40" count="14" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
       </file>
       <file name="sum.ts" path="D:\vs-code\rsschool\new-react\rsschool-react\src\tests\sum.ts">
         <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
