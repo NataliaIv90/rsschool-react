@@ -64,11 +64,9 @@ describe('ThemeProvider', () => {
       </ThemeProvider>
     );
 
-    // First toggle
     await userEvent.click(screen.getByTestId('toggle-theme'));
     expect(screen.getByTestId('theme-value').textContent).toBe('Dark');
 
-    // Second toggle
     await userEvent.click(screen.getByTestId('toggle-theme'));
     expect(screen.getByTestId('theme-value').textContent).toBe('Light');
   });

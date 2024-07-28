@@ -10,7 +10,7 @@ vi.mock('react-redux', () => ({
 
 describe('useHandleClearAll', () => {
   beforeEach(() => {
-    vi.clearAllMocks(); // Clear previous mocks before each test
+    vi.clearAllMocks();
   });
 
   it('should dispatch clearAllSelectedItems action when invoked', () => {
@@ -19,12 +19,10 @@ describe('useHandleClearAll', () => {
 
     const { result } = renderHook(() => useHandleClearAll());
 
-    // Call the function returned by the hook
     act(() => {
       result.current();
     });
 
-    // Assert that dispatch was called with clearAllSelectedItems action
     expect(dispatch).toHaveBeenCalledWith(clearAllSelectedItems());
   });
 });

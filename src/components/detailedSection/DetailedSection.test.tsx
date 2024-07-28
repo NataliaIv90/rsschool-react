@@ -4,21 +4,18 @@ import { DetailedView } from './DetailedSection';
 import { useGetCharacterDataQuery } from '../../redux/slices/starWarsApiSlice';
 import renderWithProviders from '../../tests/renderWithProviders';
 
-// Mock RouteError correctly
 vi.mock('../routeError/RouteError', () => ({
   RouteError: vi.fn(({ currentError }) => <div>{currentError.message}</div>),
 }));
 
 const navigate = vi.fn();
 
-// Mock Button component
 vi.mock('../../shared/components/button/Button', () => ({
   Button: vi.fn(({ text, onClick }) => (
     <button onClick={onClick}>{text}</button>
   )),
 }));
 
-// Mock react-router-dom correctly
 vi.mock('react-router-dom', async (importOriginal) => {
   const actual: object = await importOriginal();
   return {

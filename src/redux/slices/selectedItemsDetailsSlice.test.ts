@@ -47,7 +47,6 @@ describe('selectedItemDetailsSlice', () => {
       items: {
         'Luke Skywalker': {
           name: 'Luke Skywalker',
-          // other fields...
         } as IStarWarsCharacter,
       },
     };
@@ -66,7 +65,6 @@ describe('selectedItemDetailsSlice', () => {
       items: {
         'Luke Skywalker': {
           name: 'Luke Skywalker',
-          // other fields...
         } as IStarWarsCharacter,
       },
     };

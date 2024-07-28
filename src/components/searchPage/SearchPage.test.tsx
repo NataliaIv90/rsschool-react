@@ -4,7 +4,6 @@ import SearchPage from './SearchPage';
 import { useGetListDataQuery } from '../../redux/slices/starWarsApiSlice';
 import renderWithProviders from '../../tests/renderWithProviders';
 
-// Mock RouteError component
 vi.mock('../routeError/RouteError', () => ({
   RouteError: vi.fn(() => <div>Mocked RouteError</div>),
 }));

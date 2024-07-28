@@ -2,7 +2,7 @@ import { describe, vi, it, expect } from 'vitest';
 import { fireEvent, screen } from '@testing-library/react';
 import { CardWrapper } from './CardWrapper';
 import { mockedCharacter } from '../../../tests/mocks/mock';
-import { IStarWarsCharacter } from '../../../types/types'; // Adjust the path as needed
+import { IStarWarsCharacter } from '../../../types/types';
 import renderWithProviders from '../../../tests/renderWithProviders';
 
 const handleClose = vi.fn();

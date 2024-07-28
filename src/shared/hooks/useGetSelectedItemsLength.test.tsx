@@ -1,4 +1,3 @@
-// Import necessary modules and components
 import React from 'react';
 import { describe, expect, it } from 'vitest';
 import { Provider } from 'react-redux';

@@ -1,4 +1,3 @@
-// FlyoutElement.test.tsx
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, Mock } from 'vitest';
 import { FlyoutElement } from './FlyoutElement';
@@ -6,7 +5,6 @@ import { useHandleDownload } from '../../shared/hooks/useHandleDownload';
 import { useHandleClearAll } from '../../shared/hooks/useHandleClearAllSelectedItems';
 import { useGetSelectedItemsNumber } from '../../shared/hooks/useGetSelectedItemsLength';
 
-// Mock implementations
 vi.mock('../../shared/hooks/useHandleDownload', () => ({
   useHandleDownload: vi.fn(() => vi.fn()),
 }));

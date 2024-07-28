@@ -1,4 +1,3 @@
-// src/components/CharacterCard/CharacterCard.test.tsx
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import CharacterCard from './CharacterCard';
@@ -28,7 +27,6 @@ describe('CharacterCard', () => {
   });
 
   it('should apply the dark theme class when the theme is dark', () => {
-    // Mock the useTheme hook to return dark theme
     vi.mock('../../shared/context/themeContext/useTheme', () => ({
       useTheme: () => ({ theme: EContextValue.DARK }),
     }));
