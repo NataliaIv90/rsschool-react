@@ -1,17 +1,15 @@
-import React from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { useGetCharacterDataQuery } from '../../redux/slices/starWarsApiSlice';
-import { RouteError } from '../routeError/RouteError';
-import { CardWrapper } from './cardWrapper/CardWrapper';
-import { useLoading } from '../../shared/hooks/useLoading';
+import { JSX } from 'react';
+import { useRouter } from 'next/router';
 
-export const DetailedView: React.FC = (): React.JSX.Element => {
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const params = {
-    page: searchParams.get('page') || '1',
-    id: searchParams.get('id') || '',
-  };
+import { useGetCharacterDataQuery } from '@/redux/slices/starWarsApiSlice';
+import { useLoading } from '@/shared/hooks';
+
+import { CardWrapper } from './cardWrapper';
+import { RouteError } from '../routeError';
+
+export const DetailedView = (): JSX.Element => {
+  const router = useRouter();
+  const { id, page = '1' } = router.query;
 
   const {
     data: character,
@@ -20,11 +18,11 @@ export const DetailedView: React.FC = (): React.JSX.Element => {
     isError,
     error,
   } = useGetCharacterDataQuery({
-    id: params.id,
+    id: id as string,
   });
 
   const handleClose = () => {
-    navigate(`/?page=${params.page}`);
+    router.push(`/?page=${page}`);
   };
 
   useLoading(isLoading, isFetching);

@@ -1,13 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-import {
-  useHandleDownload,
-  useHandleClearAll,
-  useGetSelectedItemsNumber,
-} from '@/shared/hooks';
+import { useHandleDownload, useHandleClearAll } from '@/shared/hooks';
 
 import { Button } from '@/shared/components';
-import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 
 export const FlyoutElement: React.FunctionComponent = (): React.JSX.Element => {
@@ -20,6 +16,7 @@ export const FlyoutElement: React.FunctionComponent = (): React.JSX.Element => {
     : 0;
 
   const handleDownload = useHandleDownload();
+
   const handleClearAll = useHandleClearAll();
   if (!selectedItemsLength) {
     return <></>;

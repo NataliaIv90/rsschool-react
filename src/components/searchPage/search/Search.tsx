@@ -14,6 +14,7 @@ export const Search: React.FC<TSearchProps> = ({
   handleCharacterSelect,
   params,
   handlePageChange,
+  children,
 }): React.JSX.Element => (
   <div className="search-page">
     <SearchInput
@@ -28,6 +29,7 @@ export const Search: React.FC<TSearchProps> = ({
             results={results.results}
             onCharacterSelect={handleCharacterSelect}
           />
+          {children}
         </div>
         <Pagination
           count={results.count || 0}

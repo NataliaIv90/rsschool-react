@@ -1,4 +1,4 @@
-import { useCallback, FC } from 'react';
+import { useCallback, FC, ReactNode } from 'react';
 import { useRouter } from 'next/router';
 
 import { useGetListDataQuery } from '@/redux/slices/starWarsApiSlice';
@@ -8,7 +8,13 @@ import { RouteError } from '../routeError/RouteError';
 import { Search } from './search';
 import { scrollToTop } from '@/shared/utils';
 
-export const SearchPage: FC = (): React.JSX.Element => {
+type TSearchPageProps = {
+  children?: ReactNode;
+};
+
+export const SearchPage: FC<TSearchPageProps> = ({
+  children,
+}): React.JSX.Element => {
   const [searchTerm, setSearchTerm] = useSaveSearchQuery();
   const router = useRouter();
   const { query } = router;
@@ -69,7 +75,9 @@ export const SearchPage: FC = (): React.JSX.Element => {
         handleSearchTermChange={handleSearchTermChange}
         params={{ page }}
         searchTerm={searchTerm}
-      />
+      >
+        {children}
+      </Search>
     </div>
   );
 };
