@@ -1,9 +1,11 @@
-import { Outlet } from 'react-router-dom';
+// import { Outlet } from 'react-router-dom';
 import SearchInput from '../../searchInput/SearchInput';
 import SearchResults from '../../searchResults/SearchResults';
 import { Pagination } from '../../pagination/Pagination';
 import React from 'react';
 import { TSearchProps } from '../../../types/types';
+import Image from 'next/image';
+import Icon from '@/icon.svg';
 
 export const Search: React.FC<TSearchProps> = ({
   handleSearch,
@@ -27,7 +29,7 @@ export const Search: React.FC<TSearchProps> = ({
             results={results.results}
             onCharacterSelect={handleCharacterSelect}
           />
-          <Outlet />
+          {/* <Outlet /> */}
         </div>
         <Pagination
           count={results.count || 0}
@@ -36,7 +38,12 @@ export const Search: React.FC<TSearchProps> = ({
         />
       </>
     ) : (
-      <p>No data to display</p>
+      <div>
+        <p>No data to display</p>
+        <div className="no-data-icon-wrapper">
+          <Image src={Icon} alt="Vaider icon" width="100" />
+        </div>
+      </div>
     )}
   </div>
 );

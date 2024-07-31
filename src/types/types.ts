@@ -91,6 +91,7 @@ export type TApiQueryProps = {
 };
 
 export type TSearchProps = {
+  children?: ReactNode;
   handleSearch: TVoidFunction;
   searchTerm: string;
   handleSearchTermChange: (searchTerm: string) => Promise<void>;

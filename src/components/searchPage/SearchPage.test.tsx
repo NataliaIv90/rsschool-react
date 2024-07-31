@@ -1,6 +1,6 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
 import { screen } from '@testing-library/react';
-import SearchPage from './SearchPage';
+import { SearchPage } from './SearchPage';
 import { useGetListDataQuery } from '../../redux/slices/starWarsApiSlice';
 import renderWithProviders from '../../tests/renderWithProviders';
 

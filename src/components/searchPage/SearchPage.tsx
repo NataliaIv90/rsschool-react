@@ -1,17 +1,25 @@
-import React, { useCallback } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { useSaveSearchQuery } from '../../shared/hooks/useSaveSearchQuery';
-import { scrollToTop } from '../../shared/utils/scrollToTop/scrollToTop';
-import { useGetListDataQuery } from '../../redux/slices/starWarsApiSlice';
-import { RouteError } from '../routeError/RouteError';
-import { Search } from './search/Search';
-import { useLoading } from '../../shared/hooks/useLoading';
+import { useCallback, FC } from 'react';
+import { useRouter } from 'next/router';
 
-const SearchPage: React.FC = (): React.JSX.Element => {
+import { useGetListDataQuery } from '@/redux/slices/starWarsApiSlice';
+import { useSaveSearchQuery, useLoading } from '@/shared/hooks';
+
+import { RouteError } from '../routeError/RouteError';
+import { Search } from './search';
+import { scrollToTop } from '@/shared/utils';
+import { Loader } from '@/shared/components';
+
+export const SearchPage: FC = (): React.JSX.Element => {
   const [searchTerm, setSearchTerm] = useSaveSearchQuery();
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const page = searchParams.get('page') || '1';
+  const router = useRouter();
+  const { query } = router;
+
+  // Obtain the current page from query parameters
+  const page = query.page ? (query.page as string) : '1';
+
+  // const handleNavigation = () => {
+  //   router.push('/new-path');
+  // };
 
   const {
     data: results,
@@ -33,23 +41,23 @@ const SearchPage: React.FC = (): React.JSX.Element => {
 
   const handleCharacterSelect = useCallback(
     (id: string) => {
-      navigate(`/details/?page=${page}&id=${id}`);
+      router.push(`/details/?page=${page}&id=${id}`);
     },
-    [navigate, page]
+    [router, page]
   );
 
   const handlePageChange = useCallback(
     (newPage: number): void => {
       scrollToTop();
-      navigate(`/?page=${newPage}`);
+      router.push(`/?page=${newPage}`);
     },
-    [navigate]
+    [router]
   );
 
   const handleSearch = useCallback((): void => {
     scrollToTop();
-    navigate('/?page=1');
-  }, [navigate]);
+    router.push('/?page=1');
+  }, [router]);
 
   useLoading(isLoading, isFetching);
 
@@ -58,16 +66,16 @@ const SearchPage: React.FC = (): React.JSX.Element => {
   }
 
   return (
-    <Search
-      results={results}
-      handlePageChange={handlePageChange}
-      handleCharacterSelect={handleCharacterSelect}
-      handleSearch={handleSearch}
-      handleSearchTermChange={handleSearchTermChange}
-      params={{ page }}
-      searchTerm={searchTerm}
-    />
+    <div className="search-page">
+      <Search
+        results={results}
+        handlePageChange={handlePageChange}
+        handleCharacterSelect={handleCharacterSelect}
+        handleSearch={handleSearch}
+        handleSearchTermChange={handleSearchTermChange}
+        params={{ page }}
+        searchTerm={searchTerm}
+      />
+    </div>
   );
 };
-
-export default SearchPage;

@@ -5,7 +5,8 @@ import {
 } from '@/types/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const baseUrl = 'https://swapi.dev/api/';
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+// const baseUrl = 'https://swapi.dev/api/';
 
 export const starWarsApiSlice = createApi({
   reducerPath: 'starWarsApi',

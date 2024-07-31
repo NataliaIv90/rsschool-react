@@ -17,6 +17,7 @@ module.exports = {
     '.eslintrc.cjs',
     'vite.config.ts',
     'vitest.config.ts',
+    'next.config.mjs',
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'react', '@typescript-eslint', 'prettier'],
