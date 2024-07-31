@@ -1,12 +1,14 @@
-import SearchInput from '../../searchInput/SearchInput';
-import SearchResults from '../../searchResults/SearchResults';
-import { Pagination } from '../../pagination/Pagination';
-import React from 'react';
-import { TSearchProps } from '../../../types/types';
 import Image from 'next/image';
+import { FunctionComponent } from 'react';
+
+import { Pagination } from '@/components/pagination';
+import { SearchResults } from '@/components/searchResults';
+import { SearchInput } from '@/components/searchInput';
+import { TSearchProps } from '@/types/types';
+
 import Icon from '@/icon.svg';
 
-export const Search: React.FC<TSearchProps> = ({
+export const Search: FunctionComponent<TSearchProps> = ({
   handleSearch,
   searchTerm,
   handleSearchTermChange,

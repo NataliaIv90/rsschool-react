@@ -335,4 +335,13 @@ body {
     display: flex;
     justify-content: center;
   }
+
+  .detailed-section {
+    position: absolute;
+    background: var(--bkg-color);
+    padding: 3%;
+    width: 100vw;
+    gap: 1rem;
+    height: calc(100vh - 250px);
+  }
 }

@@ -1,7 +1,7 @@
 import { JSX } from 'react';
 import { useRouter } from 'next/router';
 
-import { useGetCharacterDataQuery } from '@/redux/slices/starWarsApiSlice';
+import { useGetCharacterDataQuery } from '@/redux/slices';
 import { useLoading } from '@/shared/hooks';
 
 import { CardWrapper } from './cardWrapper';

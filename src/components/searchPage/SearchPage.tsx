@@ -1,7 +1,7 @@
 import { useCallback, FC, ReactNode } from 'react';
 import { useRouter } from 'next/router';
 
-import { useGetListDataQuery } from '@/redux/slices/starWarsApiSlice';
+import { useGetListDataQuery } from '@/redux/slices';
 import { useSaveSearchQuery, useLoading } from '@/shared/hooks';
 
 import { RouteError } from '../routeError/RouteError';
@@ -66,18 +66,16 @@ export const SearchPage: FC<TSearchPageProps> = ({
   }
 
   return (
-    <div className="search-page">
-      <Search
-        results={results}
-        handlePageChange={handlePageChange}
-        handleCharacterSelect={handleCharacterSelect}
-        handleSearch={handleSearch}
-        handleSearchTermChange={handleSearchTermChange}
-        params={{ page }}
-        searchTerm={searchTerm}
-      >
-        {children}
-      </Search>
-    </div>
+    <Search
+      results={results}
+      handlePageChange={handlePageChange}
+      handleCharacterSelect={handleCharacterSelect}
+      handleSearch={handleSearch}
+      handleSearchTermChange={handleSearchTermChange}
+      params={{ page }}
+      searchTerm={searchTerm}
+    >
+      {children}
+    </Search>
   );
 };

@@ -6,7 +6,7 @@ import { EContextValue } from '@/types/types';
 import { useTheme } from '@/shared/context';
 
 import { Button, Loader } from '@/shared/components';
-import { FlyoutElement } from '../flyoutElement/FlyoutElement';
+import { FlyoutElement } from '../flyoutElement';
 
 interface PageWrapperProps {
   children: React.ReactNode;

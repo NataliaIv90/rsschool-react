@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button } from '../../shared/components/button/Button';
+
+import { Button } from '@/shared/components';
 
 export type TRouteError = {
   currentError?: string | object;
