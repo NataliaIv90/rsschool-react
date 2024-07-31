@@ -1,98 +1,73 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { Outlet, useNavigate, useSearchParams } from 'react-router-dom';
-import SearchInput from '../searchInput/SearchInput';
-import SearchResults from '../searchResults/SearchResults';
-import { Pagination } from '../pagination/Pagination';
+import React, { useCallback } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useSaveSearchQuery } from '../../shared/hooks/useSaveSearchQuery';
-import { Loader } from '../../shared/components/loader/Loader';
-import { scrollToTop } from '../../shared/utils/scrollToTop';
-import { IStarWarsCharacter } from '../../types/types';
+import { scrollToTop } from '../../shared/utils/scrollToTop/scrollToTop';
+import { useGetListDataQuery } from '../../redux/slices/starWarsApiSlice';
+import { RouteError } from '../routeError/RouteError';
+import { Search } from './search/Search';
+import { useLoading } from '../../shared/hooks/useLoading';
 
-export const SearchPage: React.FC = (): JSX.Element => {
+const SearchPage: React.FC = (): React.JSX.Element => {
   const [searchTerm, setSearchTerm] = useSaveSearchQuery();
-  const [results, setResults] = useState<IStarWarsCharacter[]>([]);
-  const [isLoading, setLoading] = useState(false);
-  const [count, setCount] = useState<number>(0);
   const navigate = useNavigate();
-  const [isInitialLoad, setInitialLoad] = useState(true);
   const [searchParams] = useSearchParams();
+  const page = searchParams.get('page') || '1';
 
-  const params = {
-    page: searchParams.get('page') || '1',
-  };
+  const {
+    data: results,
+    isLoading,
+    isError,
+    error,
+    isFetching,
+  } = useGetListDataQuery({
+    page,
+    searchTerm,
+  });
 
-  const handleSearchTermChange = async (searchTerm: string): Promise<void> => {
-    await setSearchTerm(searchTerm);
-  };
+  const handleSearchTermChange = useCallback(
+    async (newSearchTerm: string): Promise<void> => {
+      await setSearchTerm(newSearchTerm);
+    },
+    [setSearchTerm]
+  );
 
-  const handleSearch = (): void => {
-    fetchResults(1, searchTerm);
-  };
+  const handleCharacterSelect = useCallback(
+    (id: string) => {
+      navigate(`/details/?page=${page}&id=${id}`);
+    },
+    [navigate, page]
+  );
 
-  const handleCharacterSelect = (id: string) => {
-    navigate(`/details/?page=${params.page}&id=${id}`);
-  };
+  const handlePageChange = useCallback(
+    (newPage: number): void => {
+      scrollToTop();
+      navigate(`/?page=${newPage}`);
+    },
+    [navigate]
+  );
 
-  const fetchResults = useCallback((page: number, searchTerm?: string) => {
-    let apiUrl = `https://swapi.dev/api/people/?page=${page}`;
-    if (searchTerm) {
-      apiUrl += `&search=${searchTerm}`;
-    }
-    setLoading(true);
-
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        setResults(data.results);
-        setCount(data.count);
-        setLoading(false);
-        setInitialLoad(false);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-        setLoading(false);
-      });
-  }, []);
-
-  const handlePageChange = (page: number): void => {
+  const handleSearch = useCallback((): void => {
     scrollToTop();
-    navigate(`/?page=${page}`);
-    fetchResults(page, searchTerm);
-  };
+    navigate('/?page=1');
+  }, [navigate]);
 
-  useEffect(() => {
-    if (isInitialLoad) {
-      fetchResults(parseInt(params.page, 10), searchTerm);
-    }
-  }, [isInitialLoad, fetchResults, params.page, searchTerm]);
+  useLoading(isLoading, isFetching);
+
+  if (isError) {
+    return <RouteError currentError={error} />;
+  }
 
   return (
-    <div className="search-page">
-      {isLoading ? <Loader /> : null}
-      <SearchInput
-        searchTerm={searchTerm}
-        onSearchTermChange={handleSearchTermChange}
-        onSearch={handleSearch}
-        isLoading={isLoading}
-      />
-      <div className="search-main-section">
-        {results.length ? (
-          <>
-            <SearchResults
-              results={results}
-              onCharacterSelect={handleCharacterSelect}
-            />
-            <Outlet />
-          </>
-        ) : (
-          <p>No data found</p>
-        )}
-      </div>
-      <Pagination
-        count={count}
-        currentPage={parseInt(params.page, 10)}
-        onPageChange={handlePageChange}
-      />
-    </div>
+    <Search
+      results={results}
+      handlePageChange={handlePageChange}
+      handleCharacterSelect={handleCharacterSelect}
+      handleSearch={handleSearch}
+      handleSearchTermChange={handleSearchTermChange}
+      params={{ page }}
+      searchTerm={searchTerm}
+    />
   );
 };
+
+export default SearchPage;

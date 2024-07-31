@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { IPagination } from '../../types/types';
 
 export const Pagination: FC<IPagination> = ({
@@ -6,7 +6,7 @@ export const Pagination: FC<IPagination> = ({
   count,
   itemsPerPage = 10,
   onPageChange,
-}): JSX.Element => {
+}): React.JSX.Element => {
   const totalPagesCount = Math.ceil(count / itemsPerPage);
 
   const generatePageNumbers = () => {
@@ -29,6 +29,7 @@ export const Pagination: FC<IPagination> = ({
         value={currentPage}
         className="pagination-select"
         onChange={(e) => onPageChange(Number(e.target.value))}
+        data-testid="pagination-select"
       >
         {pages.map((page) => (
           <option key={page} value={page}>

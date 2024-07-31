@@ -1,4 +1,18 @@
 {
+  "compilerOptions": {
+    "target": "ES2021",
+    "lib": ["DOM", "ES2021"],
+    "module": "esnext",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "types": ["node", "vite/client", "@types/testing-library__user-event"]
+  },
   "files": [],
   "references": [
     {
@@ -7,5 +21,6 @@
     {
       "path": "./tsconfig.node.json"
     }
-  ]
+  ],
+  "exclude": ["node_modules", "__tests__", "vite.config.ts"]
 }

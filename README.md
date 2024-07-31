@@ -1,30 +1,53 @@
-# React + TypeScript + Vite
+# Star Wars API Project Documentation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
 
-Currently, two official plugins are available:
+This project is a React application built with Vite for fast development and build processes. It uses TypeScript for type safety, Redux and Redux Toolkit Query (RTK Query) for data fetching and state management, and React Router for navigation. The application interacts with the Star Wars API (SWAPI) to fetch and display information about Star Wars characters.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Structure
 
-## Expanding the ESLint configuration
+The project is structured to follow modern best practices, using ESLint and Prettier for code quality and consistency, and Husky and lint-staged for pre-commit hooks to ensure code quality before commits.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Scripts
 
-- Configure the top-level `parserOptions` property like this:
+- **dev**: Starts the development server using Vite.
+- **build**: Compiles TypeScript and builds the application using Vite.
+- **lint**: Runs ESLint on the ./src/ directory.
+- **lint:fix**: Runs ESLint with the --fix flag on the ./src/ directory.
+- **preview**: Previews the production build locally.
+- **format**: Formats the codebase using Prettier.
+- **format:fix**: Formats the codebase and additional files using Prettier.
+- **precommit**: Runs format and lint scripts before committing changes.
+- **prepare**: Husky hook installation script.
+- **test**: Run tests.
+- **coverage**: Provide coverage report from v8.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Husky
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Husky is used to run the pre-commit hook which ensures that code formatting and linting are performed before a commit is made. The pre-commit hook runs the precommit script, which formats and lints the codebase.
+
+## ESLint Configuration
+
+ESLint is configured to work with TypeScript and React, ensuring code quality and consistency across the codebase. The configuration file .eslintrc.cjs includes settings and rules for linting JavaScript, JSX, TypeScript, and TSX files.
+
+## Prettier Configuration
+
+Prettier is used to format the codebase, ensuring a consistent coding style. The configuration file .prettierrc includes settings for Prettier.
+
+## Running the Project
+
+- Install Dependencies:
+
+npm install
+
+- Start Development Server:
+
+npm run dev
+
+## Usage
+
+The application fetches data from the Star Wars API and displays information about characters, including their name, height, mass, and other attributes. Users can navigate through different characters using React Router.
+
+## About me
+
+I am [Natalia Ivantsova](https://github.com/NataliaIv90), a Front-End Developer from Ukraine, passionate about creating intuitive and dynamic user interfaces. This project was developed as part of a [React course at RSSchool](https://rs.school/courses/reactjs).

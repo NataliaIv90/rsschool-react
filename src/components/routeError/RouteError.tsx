@@ -1,24 +1,26 @@
+import React from 'react';
 import { isRouteErrorResponse, Link, useRouteError } from 'react-router-dom';
+import { Button } from '../../shared/components/button/Button';
 
-export const RouteError = () => {
+export type TRouteError = {
+  currentError?: string | object;
+};
+
+export const RouteError: React.FC<TRouteError> = ({
+  currentError,
+}): React.JSX.Element => {
   const error = useRouteError();
-  let message = 'An unknown error occurred';
-
-  if (error instanceof Error) {
-    message = error.message;
-  } else if (isRouteErrorResponse(error)) {
-    message = error.statusText || JSON.stringify(error.data);
-  }
-
   console.error(error);
 
   return (
     <div className="route-error">
       <div className="route-error__content">
         <h1>Oops!</h1>
-        <p>{message}</p>
+        <p>An unexpected error occurred.</p>
+        {isRouteErrorResponse(error) ? <p>{error.statusText}</p> : null}
+        {currentError ? <p>{JSON.stringify(currentError)}</p> : null}
         <Link to="/">
-          <button className="btn">Back to home</button>
+          <Button text="Back to home" />
         </Link>
       </div>
     </div>

@@ -1,39 +1,40 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useCallback, useState } from 'react';
 import { SearchInputProps } from '../../types/types';
+import { SearchForm } from './searchForm/SearchForm';
 
 const SearchInput: React.FC<SearchInputProps> = ({
-  searchTerm,
+  searchTerm: externalSearchTerm,
   onSearchTermChange,
   onSearch,
-  isLoading,
-}): JSX.Element => {
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onSearchTermChange(event.target.value);
-  };
+}): React.JSX.Element => {
+  const [searchTerm, setSearchTerm] = useState(externalSearchTerm);
 
-  const handleSearchClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    onSearch();
-  };
+  const handleInputChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setSearchTerm(event.target.value);
+    },
+    []
+  );
+
+  const handleFormSubmit = useCallback(
+    (
+      event:
+        | React.FormEvent<HTMLFormElement>
+        | React.MouseEvent<HTMLButtonElement, MouseEvent>
+    ) => {
+      event.preventDefault();
+      onSearchTermChange(searchTerm);
+      onSearch();
+    },
+    [onSearch, onSearchTermChange, searchTerm]
+  );
 
   return (
-    <form className="search-form">
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={handleInputChange}
-        placeholder="Enter the query..."
-        className="form-input"
-      />
-      <button
-        type="submit"
-        onClick={handleSearchClick}
-        disabled={isLoading}
-        className="btn"
-      >
-        Search
-      </button>
-    </form>
+    <SearchForm
+      handleFormSubmit={handleFormSubmit}
+      handleInputChange={handleInputChange}
+      searchTerm={searchTerm}
+    />
   );
 };
 

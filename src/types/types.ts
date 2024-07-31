@@ -23,15 +23,15 @@ export interface IStarWarsCharacter {
   url: string;
 }
 
+export type TVoidFunction = () => void;
+
+export type TOnSearchTermChange = (searchTerm: string) => void;
+
 export interface SearchInputProps {
   searchTerm: string;
-  onSearchTermChange: (searchTerm: string) => void;
-  onSearch: () => void;
-  isLoading: boolean;
-}
-
-export interface SearchResultsProps {
-  results: IStarWarsCharacter[];
+  onSearchTermChange: TOnSearchTermChange;
+  onSearch: TVoidFunction;
+  // isLoading: boolean;
 }
 
 export interface IPagination {
@@ -59,4 +59,57 @@ export interface DetailedSectionProps {
 export interface SearchResultsProps {
   results: IStarWarsCharacter[];
   onCharacterSelect: (id: string) => void;
+}
+
+export type TOnSubmitFunction = (
+  event:
+    | React.FormEvent<HTMLFormElement>
+    | React.MouseEvent<HTMLButtonElement, MouseEvent>
+) => void;
+
+export type TOnChangeFunction = (
+  event: React.ChangeEvent<HTMLInputElement>
+) => void;
+
+export type TSearchForm = {
+  handleFormSubmit: TOnSubmitFunction;
+  searchTerm: string;
+  handleInputChange: TOnChangeFunction;
+};
+
+export type TResponseData = {
+  count?: number;
+  next?: string;
+  previous?: string;
+  results?: IStarWarsCharacter[] | IStarWarsCharacter;
+  detail?: string;
+};
+
+export type TApiQueryProps = {
+  page: string;
+  searchTerm: string;
+};
+
+export type TSearchProps = {
+  handleSearch: TVoidFunction;
+  searchTerm: string;
+  handleSearchTermChange: (searchTerm: string) => Promise<void>;
+  results?: TResponseData;
+  handleCharacterSelect: (id: string) => void;
+  params: TParams;
+  handlePageChange: (page: number) => void;
+};
+
+export type TParams = {
+  page: string;
+};
+
+export enum EContextValue {
+  DARK = 'dark',
+  LIGHT = 'light',
+}
+
+export interface ThemeContextType {
+  theme: EContextValue;
+  toggleTheme: () => void;
 }

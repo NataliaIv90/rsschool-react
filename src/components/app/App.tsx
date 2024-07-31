@@ -1,10 +1,28 @@
-import { SearchPage } from '../searchPage/SearchPage';
+import React from 'react';
+import SearchPage from '../searchPage/SearchPage';
+import { Loader } from '../../shared/components/loader/Loader';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+import { FlyoutElement } from '../flyoutElement/FlyoutElement';
+import { EContextValue } from '../../types/types';
+import { Button } from '../../shared/components/button/Button';
+import { useTheme } from '../../shared/context/themeContext/useTheme';
 
-const App = (): JSX.Element => {
+const App: React.FC = (): React.JSX.Element => {
+  const isLoading = useSelector((state: RootState) => state.loader.isLoading);
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <div className="App">
+    <>
+      <Button
+        classNames="theme-btn"
+        onClick={toggleTheme}
+        text={theme === EContextValue.LIGHT ? '🌞' : '🌙'}
+      />
+      {isLoading ? <Loader /> : null}
       <SearchPage />
-    </div>
+      <FlyoutElement />
+    </>
   );
 };
 

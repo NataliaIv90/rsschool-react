@@ -1,25 +1,27 @@
 import React from 'react';
 import { SearchResultsProps } from '../../types/types';
+import { Button } from '../../shared/components/button/Button';
+import { CheckboxInput } from './checkboxInput/CheckboxInput';
 
-const SearchResults: React.FC<SearchResultsProps> = ({
+export const SearchResults: React.FC<SearchResultsProps> = ({
   results,
   onCharacterSelect,
-}) => {
-  return (
-    <div className="search-results">
-      {results.map((character) => (
-        <button
+}) => (
+  <ul className="search-results">
+    {results.map((character) => (
+      <li className="search-results-item" key={character.name}>
+        <CheckboxInput character={character} />
+        <Button
+          classNames="search-results-btn"
+          text={character.name}
           key={character.name}
-          className="btn"
           onClick={() =>
             onCharacterSelect(character.url.split('/people/')[1].split('/')[0])
           }
-        >
-          {character.name}
-        </button>
-      ))}
-    </div>
-  );
-};
+        />
+      </li>
+    ))}
+  </ul>
+);
 
 export default SearchResults;
