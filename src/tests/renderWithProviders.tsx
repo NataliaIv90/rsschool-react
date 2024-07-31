@@ -1,7 +1,6 @@
 import { render, RenderOptions } from '@testing-library/react';
 import { ReactElement } from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
 import {
   configureStore,
   PreloadedStateShapeFromReducersMapObject,
@@ -29,9 +28,7 @@ const renderWithProviders = (
 ) => {
   return render(
     <Provider store={store}>
-      <BrowserRouter>
-        <ThemeProvider>{ui}</ThemeProvider>
-      </BrowserRouter>
+      <ThemeProvider>{ui}</ThemeProvider>
     </Provider>,
     renderOptions
   );
