@@ -26,6 +26,11 @@ export const Search: FunctionComponent<TSearchProps> = ({
     />
     {Array.isArray(results?.results) && results?.results?.length ? (
       <>
+        {searchTerm ? (
+          <p className="search-term-description">
+            Search results for <strong>{searchTerm}</strong>
+          </p>
+        ) : null}
         <div className="search-main-section">
           <SearchResults
             results={results.results}
@@ -41,9 +46,16 @@ export const Search: FunctionComponent<TSearchProps> = ({
       </>
     ) : (
       <div>
-        <p>No data to display</p>
+        <p>
+          No data to display for <strong>{searchTerm}</strong>
+        </p>
         <div className="no-data-icon-wrapper">
-          <Image src={Icon} alt="Vaider icon" width="100" />
+          <Image
+            src={Icon}
+            alt="Vaider icon"
+            width="100"
+            className="no-data-icon"
+          />
         </div>
       </div>
     )}

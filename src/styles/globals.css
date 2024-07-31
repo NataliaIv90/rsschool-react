@@ -126,7 +126,7 @@ body {
   grid-template-columns: 1fr 3fr;
   align-self: center;
   gap: 2rem;
-  margin: 30px auto 0;
+  margin: 0 auto;
   flex-wrap: wrap;
 }
 
@@ -284,8 +284,19 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
   height: auto;
+}
+
+.search-term-description {
+  margin: 0;
+  padding: 0.5rem 0 0 2rem;
+  text-align: left;
+  width: 100%;
+}
+
+.no-data-icon {
+  margin: auto;
+  display: block;
 }
 
 @media screen and (max-width: 980px) {

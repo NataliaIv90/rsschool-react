@@ -26,7 +26,7 @@ export const DetailedView = (): JSX.Element => {
   };
 
   useLoading(isLoading, isFetching);
-
+  console.log(isLoading);
   if (isError) {
     return <RouteError currentError={error} />;
   }
