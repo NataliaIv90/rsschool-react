@@ -1,10 +1,12 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import { PageWrapper } from '@/components/pageWrapper';
 import { useRouter } from 'next/router';
+
 import { useGetCharacterDataQuery } from '@/redux/slices/starWarsApiSlice';
-import { RouteError } from '@/components/routeError';
-import { CardWrapper } from '@/components/detailedSection/cardWrapper/CardWrapper';
 import { useLoading } from '@/shared/hooks';
+
+import { CardWrapper } from '@/components/detailedSection/cardWrapper/CardWrapper';
+import { PageWrapper } from '@/components/pageWrapper';
+import { RouteError } from '@/components/routeError';
 
 interface DetailsPageProps {
   id: string;
@@ -38,7 +40,7 @@ const Details = ({ id }: DetailsPageProps) => {
   );
 };
 
-// Fetching the route parameter
+// eslint-disable-next-line
 export const getServerSideProps: GetServerSideProps<DetailsPageProps> = async (
   context: GetServerSidePropsContext
 ) => {

@@ -1,11 +1,12 @@
 import React, { ChangeEvent, useState, useEffect } from 'react';
-import { IStarWarsCharacter } from '@/types/types';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
+
+import { IStarWarsCharacter } from '@/types/types';
+import { RootState } from '@/redux/store';
 import {
   setSelectedItem,
   removeSelectedItemByName,
-} from '../../../redux/slices/selectedItemsDetailsSlice';
+} from '@/redux/slices/selectedItemsDetailsSlice';
 
 type ICheckboxInputProps = {
   character: IStarWarsCharacter;

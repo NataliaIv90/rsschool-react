@@ -7,19 +7,13 @@ import { useSaveSearchQuery, useLoading } from '@/shared/hooks';
 import { RouteError } from '../routeError/RouteError';
 import { Search } from './search';
 import { scrollToTop } from '@/shared/utils';
-import { Loader } from '@/shared/components';
 
 export const SearchPage: FC = (): React.JSX.Element => {
   const [searchTerm, setSearchTerm] = useSaveSearchQuery();
   const router = useRouter();
   const { query } = router;
 
-  // Obtain the current page from query parameters
   const page = query.page ? (query.page as string) : '1';
-
-  // const handleNavigation = () => {
-  //   router.push('/new-path');
-  // };
 
   const {
     data: results,

@@ -6,6 +6,7 @@ import { EContextValue } from '@/types/types';
 import { useTheme } from '@/shared/context';
 
 import { Button, Loader } from '@/shared/components';
+import { FlyoutElement } from '../flyoutElement/FlyoutElement';
 
 interface PageWrapperProps {
   children: React.ReactNode;
@@ -24,6 +25,7 @@ export const PageWrapper: React.FC<PageWrapperProps> = ({ children }) => {
       />
       {isLoading ? <Loader /> : null}
       <main className="main">{children}</main>
+      <FlyoutElement />
     </>
   );
 };

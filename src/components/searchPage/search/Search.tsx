@@ -1,4 +1,3 @@
-// import { Outlet } from 'react-router-dom';
 import SearchInput from '../../searchInput/SearchInput';
 import SearchResults from '../../searchResults/SearchResults';
 import { Pagination } from '../../pagination/Pagination';
@@ -29,7 +28,6 @@ export const Search: React.FC<TSearchProps> = ({
             results={results.results}
             onCharacterSelect={handleCharacterSelect}
           />
-          {/* <Outlet /> */}
         </div>
         <Pagination
           count={results.count || 0}
