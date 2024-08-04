@@ -7,6 +7,7 @@ import { store } from '@/redux/store';
 import { ThemeProvider } from '@/shared/context';
 
 import { ErrorBoundary } from '@/components/errorBoundary';
+import { PageWrapper } from '@/components/pageWrapper';
 
 import '@/styles/globals.css';
 
@@ -21,7 +22,9 @@ const App = ({ Component, pageProps }: AppProps) => {
             <Head>
               <title>{title}</title>
             </Head>
-            <Component {...pageProps} />
+            <PageWrapper>
+              <Component {...pageProps} />
+            </PageWrapper>
           </>
         </ErrorBoundary>
       </ThemeProvider>

@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
+
 import SearchInput from './SearchInput';
 
 vi.mock('./searchForm/SearchForm', () => ({

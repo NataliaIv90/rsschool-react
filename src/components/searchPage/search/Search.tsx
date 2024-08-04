@@ -47,13 +47,14 @@ export const Search: FunctionComponent<TSearchProps> = ({
     ) : (
       <div>
         <p>
-          No data to display for <strong>{searchTerm}</strong>
+          <span>No data to display for</span> <strong>{searchTerm}</strong>
         </p>
         <div className="no-data-icon-wrapper">
           <Image
             src={Icon}
             alt="Vaider icon"
             width="100"
+            height="100"
             className="no-data-icon"
           />
         </div>

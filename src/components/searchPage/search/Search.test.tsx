@@ -1,7 +1,8 @@
-import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
+
+import { mockedCharacter } from '@/tests/mocks/mock';
 import { Search } from './Search';
-import { mockedCharacter } from '../../../tests/mocks/mock';
 
 vi.mock('../../searchInput/SearchInput', () => ({
   __esModule: true,
@@ -75,7 +76,7 @@ describe('Search Component', () => {
       />
     );
 
-    expect(screen.getByText('No data to display')).toBeInTheDocument();
+    expect(screen.getByText('No data to display for')).toBeInTheDocument();
   });
 
   it('calls handleSearch when SearchInput triggers onSearch', () => {

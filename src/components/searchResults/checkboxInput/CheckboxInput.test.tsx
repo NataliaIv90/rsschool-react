@@ -1,17 +1,31 @@
-import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, MockedFunction } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { CheckboxInput } from './CheckboxInput';
-import {
-  setSelectedItem,
-  removeSelectedItemByName,
-} from '../../../redux/slices/selectedItemsDetailsSlice';
-import { mockedCharacter } from '../../../tests/mocks/mock';
+import { IStarWarsCharacter } from '@/types/types';
+import { mockedCharacter } from '@/tests/mocks/mock';
+import { setSelectedItem, removeSelectedItemByName } from '@/redux/slices';
 
 vi.mock('react-redux', () => ({
   useSelector: vi.fn(),
   useDispatch: vi.fn(),
 }));
+
+vi.mock('@/redux/slices/selectedItemsDetailsSlice', async (importOriginal) => {
+  const actual: object = await importOriginal();
+  return {
+    ...actual,
+    setSelectedItem: (character: IStarWarsCharacter) => ({
+      type: 'selectedItemDetails/setSelectedItem',
+      payload: character,
+    }),
+    removeSelectedItemByName: (name: string) => ({
+      type: 'selectedItemDetails/removeSelectedItemByName',
+      payload: name,
+    }),
+  };
+});
 
 describe('CheckboxInput', () => {
   it('should render the checkbox with correct checked state', () => {

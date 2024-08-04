@@ -15,3 +15,5 @@ export const {
 export const { startLoading, stopLoading } = loaderSlice.actions;
 
 export const { setCurrentPageItems } = currentPageItemsSlice.actions;
+
+export { starWarsApiSlice };
