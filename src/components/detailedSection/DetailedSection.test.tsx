@@ -15,10 +15,14 @@ vi.mock('@/redux/slices/starWarsApiSlice', async (importOriginal) => {
 });
 
 const mockPush = vi.fn();
-vi.mock('next/router', () => ({
+const mockUseSearchParams = vi.fn();
+
+vi.mock('next/navigation', () => ({
   useRouter: () => ({
-    query: { id: '1', page: '1' },
     push: mockPush,
+  }),
+  useSearchParams: () => ({
+    get: mockUseSearchParams,
   }),
 }));
 
@@ -34,6 +38,10 @@ describe('DetailedView Component', () => {
   });
 
   it('navigates to the correct URL when close button is clicked', async () => {
+    mockUseSearchParams.mockImplementation((param: string) =>
+      param === 'id' ? '1' : '1'
+    );
+
     (useGetCharacterDataQuery as Mock).mockReturnValue({
       data: mockedCharacter,
       isLoading: false,
@@ -45,6 +53,8 @@ describe('DetailedView Component', () => {
     renderWithProviders(<DetailedView />);
 
     const closeButton = screen.getByText('Close card');
+    expect(closeButton).toBeInTheDocument();
+
     fireEvent.click(closeButton);
 
     await waitFor(() => {
@@ -53,6 +63,8 @@ describe('DetailedView Component', () => {
   });
 
   it('handles missing search parameters', async () => {
+    mockUseSearchParams.mockImplementation((param: string) => null);
+
     (useGetCharacterDataQuery as Mock).mockReturnValue({
       data: null,
       isLoading: false,
@@ -64,5 +76,6 @@ describe('DetailedView Component', () => {
     renderWithProviders(<DetailedView />);
 
     expect(screen.queryByText(mockedCharacter.name)).not.toBeInTheDocument();
+    expect(screen.getByText('Character ID is missing')).toBeInTheDocument();
   });
 });
