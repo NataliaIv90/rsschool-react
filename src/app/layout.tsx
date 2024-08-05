@@ -2,11 +2,10 @@ import { ReactNode } from 'react';
 
 import { ErrorBoundary } from '@/components/errorBoundary';
 import { ReduxProvider } from '@/redux/ReduxProvider';
-import icon from './icon.svg';
+
 import '@/styles/globals.css';
 
 import type { Metadata } from 'next';
-import Head from 'next/head';
 
 export const metadata: Metadata = {
   title: 'React 2024 Q3 - Natalia Ivantsova',
