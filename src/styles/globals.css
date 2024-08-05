@@ -6,6 +6,7 @@
   --basic-yellow-light: #ffed8c;
   --basic-blue: #13139c;
   --bkg-color: #cdcccc;
+  --transparrent-bkg: #3b3b3bbb;
 }
 
 .dark-theme {
@@ -348,11 +349,13 @@ body {
   }
 
   .detailed-section {
-    position: absolute;
-    background: var(--bkg-color);
+    position: fixed;
+    background: var(--transparrent-bkg);
     padding: 3%;
     width: 100vw;
     gap: 1rem;
-    height: calc(100vh - 250px);
+    height: 100vh;
+    top: 0;
+    left: 0;
   }
 }
