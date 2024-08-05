@@ -1,14 +1,17 @@
 import { FC } from 'react';
 
+import { DetailedView } from '@/components/detailedSection';
 import { PageWrapper } from '@/components/pageWrapper';
-import { ThemeProvider } from '@/shared/context/themeContext/ThemeContext';
 import { SearchPage } from '@/components/searchPage';
+import { ThemeProvider } from '@/shared/context/themeContext/ThemeContext';
 
 const Page: FC = () => {
   return (
     <ThemeProvider>
       <PageWrapper>
-        <SearchPage />
+        <SearchPage>
+          <DetailedView />
+        </SearchPage>
       </PageWrapper>
     </ThemeProvider>
   );
