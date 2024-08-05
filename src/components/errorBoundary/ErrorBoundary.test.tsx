@@ -1,6 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import ErrorBoundary from './ErrorBoundary';
+import { render, screen, fireEvent } from '@testing-library/react';
+
+import { ErrorBoundary } from './ErrorBoundary';
 
 describe('ErrorBoundary', () => {
   it('should render child components without errors', () => {

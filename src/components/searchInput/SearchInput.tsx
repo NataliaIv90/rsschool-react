@@ -1,12 +1,19 @@
-import React, { ChangeEvent, useCallback, useState } from 'react';
-import { SearchInputProps } from '../../types/types';
-import { SearchForm } from './searchForm/SearchForm';
+import {
+  ChangeEvent,
+  FunctionComponent,
+  JSX,
+  useCallback,
+  useState,
+} from 'react';
 
-const SearchInput: React.FC<SearchInputProps> = ({
+import { SearchInputProps } from '@/types/types';
+import { SearchForm } from './searchForm';
+
+export const SearchInput: FunctionComponent<SearchInputProps> = ({
   searchTerm: externalSearchTerm,
   onSearchTermChange,
   onSearch,
-}): React.JSX.Element => {
+}): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState(externalSearchTerm);
 
   const handleInputChange = useCallback(
@@ -37,5 +44,3 @@ const SearchInput: React.FC<SearchInputProps> = ({
     />
   );
 };
-
-export default SearchInput;

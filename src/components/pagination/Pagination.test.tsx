@@ -1,15 +1,16 @@
-import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
+
 import { Pagination } from './Pagination';
 
 describe('Pagination Component', () => {
   it('renders without crashing', () => {
-    render(<Pagination currentPage={1} count={20} onPageChange={() => { }} />);
+    render(<Pagination currentPage={1} count={20} onPageChange={() => {}} />);
     expect(screen.getByTestId('pagination-select')).toBeInTheDocument();
   });
 
   it('renders correctly with multiple pages', () => {
-    render(<Pagination currentPage={1} count={25} onPageChange={() => { }} />);
+    render(<Pagination currentPage={1} count={25} onPageChange={() => {}} />);
     expect(screen.getAllByRole('option')).toHaveLength(3);
   });
 

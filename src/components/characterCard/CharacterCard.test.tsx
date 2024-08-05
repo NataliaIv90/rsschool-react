@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import CharacterCard from './CharacterCard';
-import { ThemeProvider } from '../../shared/context/themeContext/ThemeContext';
-import { mockedCharacter } from '../../tests/mocks/mock';
-import { EContextValue } from '../../types/types';
+import { ThemeProvider } from '@/shared/context/themeContext/ThemeContext';
+import { mockedCharacter } from '@/tests/mocks/mock';
+import { EContextValue } from '@/types/types';
 
 const ThemeProviderWrapper = ({ children }: { children: React.ReactNode }) => (
   <ThemeProvider> {children} </ThemeProvider>

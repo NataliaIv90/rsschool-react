@@ -1,8 +1,9 @@
 import React from 'react';
-import { ICharacterCardProps } from '../../types/types';
-import { characterCardData } from '../../assets/data/dataArrays';
-import { EContextValue } from '../../types/types';
-import { useTheme } from '../../shared/context/themeContext/useTheme';
+
+import { useTheme } from '@/shared/context';
+
+import { characterCardData } from '@/assets/data/dataArrays';
+import { EContextValue, ICharacterCardProps } from '@/types/types';
 
 const CharacterCard: React.FC<ICharacterCardProps> = ({
   character,

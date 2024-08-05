@@ -1,7 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import SearchResults from './SearchResults';
 import { vi, describe, it, expect } from 'vitest';
+
 import { mockedCharactersArr } from '../../tests/mocks/mock';
+import { SearchResults } from './SearchResults';
 
 vi.mock('../../shared/components/button/Button', () => ({
   Button: vi.fn(({ text, onClick }) => (

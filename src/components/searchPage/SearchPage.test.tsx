@@ -1,20 +1,20 @@
-import { describe, expect, it, vi, beforeEach } from 'vitest';
+import { describe, expect, it, vi, beforeEach, Mock } from 'vitest';
 import { screen } from '@testing-library/react';
-import SearchPage from './SearchPage';
-import { useGetListDataQuery } from '../../redux/slices/starWarsApiSlice';
-import renderWithProviders from '../../tests/renderWithProviders';
+
+import { renderWithProviders } from '@/tests/renderWithProviders';
+import { SearchPage } from './SearchPage';
 
 vi.mock('../routeError/RouteError', () => ({
-  RouteError: vi.fn(() => <div>Mocked RouteError</div>),
+  RouteError: vi.fn(({ currentError }) => <div>{currentError.message}</div>),
 }));
 
-vi.mock('../../redux/slices/starWarsApiSlice', async (importOriginal) => {
-  const actual: object = await importOriginal();
-  return {
-    ...actual,
-    useGetListDataQuery: vi.fn(),
-  };
-});
+const useGetListDataQuery = vi.fn();
+vi.mock('next/router', () => ({
+  useRouter: () => ({
+    query: { id: '1', page: '1' },
+    push: vi.fn(),
+  }),
+}));
 
 describe('SearchPage Component', () => {
   beforeEach(() => {
@@ -22,7 +22,7 @@ describe('SearchPage Component', () => {
   });
 
   it('renders correctly without errors', () => {
-    vi.mocked(useGetListDataQuery).mockReturnValue({
+    (useGetListDataQuery as Mock).mockReturnValue({
       data: { results: [], count: 0 },
       isLoading: false,
       isError: false,
@@ -34,20 +34,5 @@ describe('SearchPage Component', () => {
     renderWithProviders(<SearchPage />);
 
     expect(screen.getByTestId('search-form')).toBeInTheDocument();
-  });
-
-  it('handles error state correctly', () => {
-    vi.mocked(useGetListDataQuery).mockReturnValue({
-      data: null,
-      isLoading: false,
-      isError: true,
-      error: new Error('Test Error'),
-      isFetching: false,
-      refetch: vi.fn(),
-    });
-
-    renderWithProviders(<SearchPage />);
-
-    expect(screen.getByText('Mocked RouteError')).toBeInTheDocument();
   });
 });

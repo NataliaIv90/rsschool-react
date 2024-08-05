@@ -9,7 +9,7 @@ const initialState: CurrentPageItemsState = {
   items: {} as TResponseData,
 };
 
-const currentPageItemsSlice = createSlice({
+export const currentPageItemsSlice = createSlice({
   name: 'currentPageItems',
   initialState,
   reducers: {

@@ -1,17 +1,18 @@
-import React from 'react';
-import CharacterCard from '../../characterCard/CharacterCard';
-import { Button } from '../../../shared/components/button/Button';
-import { IStarWarsCharacter, TVoidFunction } from '../../../types/types';
+import { FunctionComponent, JSX } from 'react';
+
+import { Button } from '@/shared/components';
+import { CharacterCard } from '@/components/characterCard';
+import { IStarWarsCharacter, TVoidFunction } from '@/types/types';
 
 export type TCardWrapper = {
   character?: IStarWarsCharacter;
   handleClose: TVoidFunction;
 };
 
-export const CardWrapper: React.FC<TCardWrapper> = ({
+export const CardWrapper: FunctionComponent<TCardWrapper> = ({
   character,
   handleClose,
-}): React.JSX.Element => (
+}): JSX.Element => (
   <section className="detailed-section">
     {character ? (
       <CharacterCard character={character} />

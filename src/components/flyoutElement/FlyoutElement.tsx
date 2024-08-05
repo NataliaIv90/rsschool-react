@@ -1,18 +1,27 @@
 import React from 'react';
-import { Button } from '../../shared/components/button/Button';
-import { useHandleDownload } from '../../shared/hooks/useHandleDownload';
-import { useHandleClearAll } from '../../shared/hooks/useHandleClearAllSelectedItems';
-import { useGetSelectedItemsNumber } from '../../shared/hooks/useGetSelectedItemsLength';
+import { useSelector } from 'react-redux';
+
+import { useHandleDownload, useHandleClearAll } from '@/shared/hooks';
+
+import { Button } from '@/shared/components';
+import { RootState } from '@/redux/store';
 
 export const FlyoutElement: React.FunctionComponent = (): React.JSX.Element => {
-  const selectedItemsLength = useGetSelectedItemsNumber();
+  const selectedItems = useSelector(
+    (state: RootState) => state.selectedItemDetails.items
+  );
+
+  const selectedItemsLength = selectedItems
+    ? Object.keys(selectedItems).length
+    : 0;
 
   const handleDownload = useHandleDownload();
+
   const handleClearAll = useHandleClearAll();
   if (!selectedItemsLength) {
     return <></>;
   }
-
+  console.log(selectedItemsLength);
   return (
     <section className="flyout-element">
       <p className="flyout-element__text">

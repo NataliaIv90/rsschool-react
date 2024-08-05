@@ -1,40 +1,42 @@
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
 import { render, RenderOptions } from '@testing-library/react';
 import { ReactElement } from 'react';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import {
-  configureStore,
-  PreloadedStateShapeFromReducersMapObject,
-} from '@reduxjs/toolkit';
+import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime';
 
-import { ThemeProvider } from '../shared/context/themeContext/ThemeContext';
-import { rootReducer, RootState } from '../redux/store';
+import { createMockRouter } from './mocks/createMockRouter';
+import { rootReducer, RootState } from '@/redux/store';
+import { ThemeProvider } from '@/shared/context';
+import { starWarsApiSlice as starWarsApi } from '@/redux/slices';
+import { vi } from 'vitest';
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
-  initialState?: PreloadedStateShapeFromReducersMapObject<RootState>;
+  initialState?: Partial<RootState>;
   store?: ReturnType<typeof configureStore>;
 }
 
-const renderWithProviders = (
+const mockPush = vi.fn();
+
+export const renderWithProviders = (
   ui: ReactElement,
   {
     initialState,
     store = configureStore({
       reducer: rootReducer,
       preloadedState: initialState,
-      middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
+      middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(starWarsApi.middleware),
     }),
     ...renderOptions
   }: ExtendedRenderOptions = {}
 ) => {
+  const router = createMockRouter({ query: { page: '1' }, push: mockPush });
   return render(
-    <Provider store={store}>
-      <BrowserRouter>
+    <RouterContext.Provider value={router}>
+      <Provider store={store}>
         <ThemeProvider>{ui}</ThemeProvider>
-      </BrowserRouter>
-    </Provider>,
+      </Provider>
+    </RouterContext.Provider>,
     renderOptions
   );
 };
-
-export default renderWithProviders;

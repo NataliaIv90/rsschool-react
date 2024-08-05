@@ -1,11 +1,15 @@
-import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import { Search } from './Search';
-import { mockedCharacter } from '../../../tests/mocks/mock';
+import { render, screen, fireEvent } from '@testing-library/react';
 
-vi.mock('../../searchInput/SearchInput', () => ({
+import { mockedCharacter } from '@/tests/mocks/mock';
+import { Search } from './Search';
+
+vi.mock('../../searchInput/', () => ({
   __esModule: true,
-  default: (props: { searchTerm: string; onSearch: (e: string) => void }) => (
+  SearchInput: (props: {
+    searchTerm: string;
+    onSearch: (e: string) => void;
+  }) => (
     <input
       data-testid="search-input"
       value={props.searchTerm}
@@ -14,18 +18,16 @@ vi.mock('../../searchInput/SearchInput', () => ({
   ),
 }));
 
-vi.mock('../../searchResults/SearchResults', () => ({
+vi.mock('../../searchResults', () => ({
   __esModule: true,
-  default: (props: object) => <div data-testid="search-results" {...props} />,
+  SearchResults: (props: object) => (
+    <div data-testid="search-results" {...props} />
+  ),
 }));
 
 vi.mock('../../pagination/Pagination', () => ({
   __esModule: true,
   Pagination: (props: object) => <div data-testid="pagination" {...props} />,
-}));
-
-vi.mock('react-router-dom', () => ({
-  Outlet: () => <div data-testid="outlet">Outlet</div>,
 }));
 
 describe('Search Component', () => {
@@ -75,7 +77,7 @@ describe('Search Component', () => {
       />
     );
 
-    expect(screen.getByText('No data to display')).toBeInTheDocument();
+    expect(screen.getByText('No data to display for')).toBeInTheDocument();
   });
 
   it('calls handleSearch when SearchInput triggers onSearch', () => {

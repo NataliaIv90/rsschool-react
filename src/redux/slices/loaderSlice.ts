@@ -8,7 +8,7 @@ const initialState: TLoaderState = {
   isLoading: false,
 };
 
-const loaderSlice = createSlice({
+export const loaderSlice = createSlice({
   name: 'loader',
   initialState,
   reducers: {

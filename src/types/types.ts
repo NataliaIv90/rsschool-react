@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, JSX } from 'react';
 
 export interface ICharacterCardProps {
   character: IStarWarsCharacter;
@@ -91,6 +91,7 @@ export type TApiQueryProps = {
 };
 
 export type TSearchProps = {
+  children?: ReactNode;
   handleSearch: TVoidFunction;
   searchTerm: string;
   handleSearchTermChange: (searchTerm: string) => Promise<void>;

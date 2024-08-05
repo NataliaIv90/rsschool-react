@@ -1,11 +1,14 @@
-import { Outlet } from 'react-router-dom';
-import SearchInput from '../../searchInput/SearchInput';
-import SearchResults from '../../searchResults/SearchResults';
-import { Pagination } from '../../pagination/Pagination';
-import React from 'react';
-import { TSearchProps } from '../../../types/types';
+import Image from 'next/image';
+import { FunctionComponent } from 'react';
 
-export const Search: React.FC<TSearchProps> = ({
+import { Pagination } from '@/components/pagination';
+import { SearchResults } from '@/components/searchResults';
+import { SearchInput } from '@/components/searchInput';
+import { TSearchProps } from '@/types/types';
+
+import Icon from '@/icon.svg';
+
+export const Search: FunctionComponent<TSearchProps> = ({
   handleSearch,
   searchTerm,
   handleSearchTermChange,
@@ -13,6 +16,7 @@ export const Search: React.FC<TSearchProps> = ({
   handleCharacterSelect,
   params,
   handlePageChange,
+  children,
 }): React.JSX.Element => (
   <div className="search-page">
     <SearchInput
@@ -22,12 +26,17 @@ export const Search: React.FC<TSearchProps> = ({
     />
     {Array.isArray(results?.results) && results?.results?.length ? (
       <>
+        {searchTerm ? (
+          <p className="search-term-description">
+            Search results for <strong>{searchTerm}</strong>
+          </p>
+        ) : null}
         <div className="search-main-section">
           <SearchResults
             results={results.results}
             onCharacterSelect={handleCharacterSelect}
           />
-          <Outlet />
+          {children}
         </div>
         <Pagination
           count={results.count || 0}
@@ -36,7 +45,20 @@ export const Search: React.FC<TSearchProps> = ({
         />
       </>
     ) : (
-      <p>No data to display</p>
+      <div>
+        <p>
+          <span>No data to display for</span> <strong>{searchTerm}</strong>
+        </p>
+        <div className="no-data-icon-wrapper">
+          <Image
+            src={Icon}
+            alt="Vaider icon"
+            width="100"
+            height="100"
+            className="no-data-icon"
+          />
+        </div>
+      </div>
     )}
   </div>
 );

@@ -2,11 +2,7 @@
 
 ## Project Overview
 
-This project is a React application built with Vite for fast development and build processes. It uses TypeScript for type safety, Redux and Redux Toolkit Query (RTK Query) for data fetching and state management, and React Router for navigation. The application interacts with the Star Wars API (SWAPI) to fetch and display information about Star Wars characters.
-
-## Project Structure
-
-The project is structured to follow modern best practices, using ESLint and Prettier for code quality and consistency, and Husky and lint-staged for pre-commit hooks to ensure code quality before commits.
+This project is a React application built with Next.js for server-side rendering and fast development processes. It uses TypeScript for type safety, Redux and Redux Toolkit Query (RTK Query) for data fetching and state management, and Next.js Pages API for navigation and routing. The application interacts with the Star Wars API (SWAPI) to fetch and display information about Star Wars characters.
 
 ## Scripts
 
@@ -22,18 +18,6 @@ The project is structured to follow modern best practices, using ESLint and Pret
 - **test**: Run tests.
 - **coverage**: Provide coverage report from v8.
 
-## Husky
-
-Husky is used to run the pre-commit hook which ensures that code formatting and linting are performed before a commit is made. The pre-commit hook runs the precommit script, which formats and lints the codebase.
-
-## ESLint Configuration
-
-ESLint is configured to work with TypeScript and React, ensuring code quality and consistency across the codebase. The configuration file .eslintrc.cjs includes settings and rules for linting JavaScript, JSX, TypeScript, and TSX files.
-
-## Prettier Configuration
-
-Prettier is used to format the codebase, ensuring a consistent coding style. The configuration file .prettierrc includes settings for Prettier.
-
 ## Running the Project
 
 - Install Dependencies:
@@ -47,6 +31,16 @@ npm run dev
 ## Usage
 
 The application fetches data from the Star Wars API and displays information about characters, including their name, height, mass, and other attributes. Users can navigate through different characters using React Router.
+
+## Screenshots
+
+![Screenshot mobile view](./src/assets/images/1.png)
+
+![Screenshot tablet view, dark mode](./src/assets/images/2.png)
+
+![Screenshot error fetching data](./src/assets/images/3.png)
+
+![Screenshot wrong search request](./src/assets/images/4.png)
 
 ## About me
 

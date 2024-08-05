@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import { ErrorBoundaryProps, ErrorBoundaryState } from '../../types/types';
 
-class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+import { ErrorBoundaryProps, ErrorBoundaryState } from '@/types/types';
+
+export class ErrorBoundary extends Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
   state: ErrorBoundaryState = {
     hasError: false,
     error: null,
@@ -59,5 +63,3 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     );
   }
 }
-
-export default ErrorBoundary;

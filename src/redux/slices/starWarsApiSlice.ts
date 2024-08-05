@@ -1,11 +1,12 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
 import {
   IStarWarsCharacter,
   TApiQueryProps,
   TResponseData,
 } from '@/types/types';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const baseUrl = 'https://swapi.dev/api/';
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const starWarsApiSlice = createApi({
   reducerPath: 'starWarsApi',

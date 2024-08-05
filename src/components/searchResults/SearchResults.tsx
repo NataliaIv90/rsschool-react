@@ -1,7 +1,8 @@
 import React from 'react';
-import { SearchResultsProps } from '../../types/types';
-import { Button } from '../../shared/components/button/Button';
-import { CheckboxInput } from './checkboxInput/CheckboxInput';
+
+import { Button } from '@/shared/components';
+import { CheckboxInput } from './checkboxInput';
+import { SearchResultsProps } from '@/types/types';
 
 export const SearchResults: React.FC<SearchResultsProps> = ({
   results,
@@ -23,5 +24,3 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
     ))}
   </ul>
 );
-
-export default SearchResults;

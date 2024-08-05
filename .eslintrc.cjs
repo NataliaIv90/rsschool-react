@@ -17,6 +17,7 @@ module.exports = {
     '.eslintrc.cjs',
     'vite.config.ts',
     'vitest.config.ts',
+    'next.config.mjs',
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'react', '@typescript-eslint', 'prettier'],
@@ -29,6 +30,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
     'prettier/prettier': 'error',
+    "react/prop-types": "off"
   },
   settings: {
     react: {

@@ -1,19 +1,23 @@
-import React, { ChangeEvent, useState, useEffect } from 'react';
-import { IStarWarsCharacter } from '@/types/types';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
 import {
-  setSelectedItem,
-  removeSelectedItemByName,
-} from '../../../redux/slices/selectedItemsDetailsSlice';
+  ChangeEvent,
+  FunctionComponent,
+  JSX,
+  useState,
+  useEffect,
+} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { IStarWarsCharacter } from '@/types/types';
+import { RootState } from '@/redux/store';
+import { setSelectedItem, removeSelectedItemByName } from '@/redux/slices';
 
 type ICheckboxInputProps = {
   character: IStarWarsCharacter;
 };
 
-export const CheckboxInput: React.FunctionComponent<ICheckboxInputProps> = ({
+export const CheckboxInput: FunctionComponent<ICheckboxInputProps> = ({
   character,
-}): React.JSX.Element => {
+}): JSX.Element => {
   const selectedItems = useSelector(
     (state: RootState) => state.selectedItemDetails.items
   );

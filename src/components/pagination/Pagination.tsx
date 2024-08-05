@@ -1,5 +1,6 @@
-import React, { FC } from 'react';
-import { IPagination } from '../../types/types';
+import { FC } from 'react';
+
+import { IPagination } from '@/types/types';
 
 export const Pagination: FC<IPagination> = ({
   currentPage,
