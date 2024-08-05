@@ -3,7 +3,7 @@ import { describe, it, expect, vi, Mock } from 'vitest';
 
 import { FlyoutElement } from './FlyoutElement';
 import { useGetSelectedItemsNumber } from '@/shared/hooks/useGetSelectedItemsLength';
-import renderWithProviders from '@/tests/renderWithProviders';
+import { renderWithProviders } from '@/tests/renderWithProviders';
 
 vi.mock('../../shared/hooks/useHandleDownload', () => ({
   useHandleDownload: vi.fn(() => vi.fn()),

@@ -1,8 +1,8 @@
-import React from 'react';
-import { screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
+import { screen } from '@testing-library/react';
+
 import { PageWrapper } from './PageWrapper';
-import renderWithProviders from '@/tests/renderWithProviders';
+import { renderWithProviders } from '@/tests/renderWithProviders';
 import { ThemeProvider } from '@/shared/context';
 
 vi.mock('@/shared/components', () => ({

@@ -9,7 +9,7 @@ import {
 import { SearchInputProps } from '@/types/types';
 import { SearchForm } from './searchForm';
 
-const SearchInput: FunctionComponent<SearchInputProps> = ({
+export const SearchInput: FunctionComponent<SearchInputProps> = ({
   searchTerm: externalSearchTerm,
   onSearchTermChange,
   onSearch,
@@ -44,5 +44,3 @@ const SearchInput: FunctionComponent<SearchInputProps> = ({
     />
   );
 };
-
-export default SearchInput;

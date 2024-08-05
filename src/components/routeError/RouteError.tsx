@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC, JSX } from 'react';
 
 import { Button } from '@/shared/components';
 
@@ -6,9 +6,7 @@ export type TRouteError = {
   currentError?: string | object;
 };
 
-export const RouteError: React.FC<TRouteError> = ({
-  currentError,
-}): React.JSX.Element => {
+export const RouteError: FC<TRouteError> = ({ currentError }): JSX.Element => {
   return (
     <div className="route-error">
       <div className="route-error__content">

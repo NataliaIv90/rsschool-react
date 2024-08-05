@@ -24,5 +24,3 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
     ))}
   </ul>
 );
-
-export default SearchResults;

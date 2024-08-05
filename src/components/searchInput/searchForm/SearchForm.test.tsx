@@ -1,7 +1,8 @@
-import { fireEvent, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
+import { fireEvent, screen } from '@testing-library/react';
+
 import { SearchForm } from './SearchForm';
-import renderWithProviders from '../../../tests/renderWithProviders';
+import { renderWithProviders } from '@/tests/renderWithProviders';
 
 describe('SearchForm', () => {
   it('renders correctly', () => {

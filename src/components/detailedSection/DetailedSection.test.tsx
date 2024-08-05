@@ -1,9 +1,10 @@
 import { describe, vi, it, expect, afterEach, Mock } from 'vitest';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
+
 import { DetailedView } from './DetailedSection';
-import { useGetCharacterDataQuery } from '@/redux/slices/starWarsApiSlice';
-import renderWithProviders from '@/tests/renderWithProviders';
 import { mockedCharacter } from '@/tests/mocks/mock';
+import { renderWithProviders } from '@/tests/renderWithProviders';
+import { useGetCharacterDataQuery } from '@/redux/slices/starWarsApiSlice';
 
 vi.mock('@/redux/slices/starWarsApiSlice', async (importOriginal) => {
   const actual: object = await importOriginal();

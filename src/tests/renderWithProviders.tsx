@@ -17,7 +17,7 @@ interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
 
 const mockPush = vi.fn();
 
-const renderWithProviders = (
+export const renderWithProviders = (
   ui: ReactElement,
   {
     initialState,
@@ -40,5 +40,3 @@ const renderWithProviders = (
     renderOptions
   );
 };
-
-export default renderWithProviders;

@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
 import Home from './index';
-import renderWithProviders from '@/tests/renderWithProviders';
+import { renderWithProviders } from '@/tests/renderWithProviders';
 
 vi.mock('@/shared/components', () => ({
   Loader: () => <div data-testid="loader">Loader</div>,
