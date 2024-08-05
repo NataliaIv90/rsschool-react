@@ -21,7 +21,7 @@ export const FlyoutElement: React.FunctionComponent = (): React.JSX.Element => {
   if (!selectedItemsLength) {
     return <></>;
   }
-  console.log(selectedItemsLength);
+
   return (
     <section className="flyout-element">
       <p className="flyout-element__text">
