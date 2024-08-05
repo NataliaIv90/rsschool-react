@@ -1,3 +1,5 @@
+'use client';
+
 import { EContextValue, ThemeContextType } from '../../../types/types';
 import React, { PropsWithChildren, ReactNode, useState } from 'react';
 

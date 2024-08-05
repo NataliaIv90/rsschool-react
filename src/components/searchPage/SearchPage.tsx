@@ -1,5 +1,7 @@
+'use client';
+
 import { useCallback, FC, ReactNode } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import { useGetListDataQuery } from '@/redux/slices';
 import { useSaveSearchQuery, useLoading } from '@/shared/hooks';
@@ -17,9 +19,9 @@ export const SearchPage: FC<TSearchPageProps> = ({
 }): React.JSX.Element => {
   const [searchTerm, setSearchTerm] = useSaveSearchQuery();
   const router = useRouter();
-  const { query } = router;
+  const searchParams = useSearchParams();
 
-  const page = query.page ? (query.page as string) : '1';
+  const page = searchParams.get('page') ?? '1';
 
   const {
     data: results,
